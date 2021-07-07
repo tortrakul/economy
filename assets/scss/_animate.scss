@@ -1,0 +1,319 @@
+@mixin slideY($duration,$timing,$delay,$direction) {
+    -webkit-animation-name: slideY;
+    -moz-animation-name: slideY;
+    animation-name: slideY;
+
+    -webkit-animation-duration: $duration;
+    -moz-animation-duration: $duration;
+    animation-duration: $duration;
+
+    -webkit-animation-timing-function: $timing;
+    -moz-animation-timing-function: $timing;
+    animation-timing-function: $timing;
+
+    -webkit-animation-delay: $delay;
+    -moz-animation-delay: $delay;
+    animation-delay: $delay;
+
+    -webkit-animation-direction: $direction;
+    -moz-animation-direction: $direction;
+    animation-direction: $direction;
+
+    @-webkit-keyframes slideY {
+        0% {
+            transform: translateY(100%);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+    @-moz-keyframes slideY {
+        0% {
+            transform: translateY(100%);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+    @keyframes slideY {
+        0% {
+            transform: translateY(100%);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+}
+
+@mixin slideX($duration,$timing,$delay,$direction) {
+    -webkit-animation-name: slideX;
+    -moz-animation-name: slideX;
+    animation-name: slideX;
+
+    -webkit-animation-duration: $duration;
+    -moz-animation-duration: $duration;
+    animation-duration: $duration;
+
+    -webkit-animation-timing-function: $timing;
+    -moz-animation-timing-function: $timing;
+    animation-timing-function: $timing;
+
+    -webkit-animation-delay: $delay;
+    -moz-animation-delay: $delay;
+    animation-delay: $delay;
+
+    -webkit-animation-direction: $direction;
+    -moz-animation-direction: $direction;
+    animation-direction: $direction;
+
+    @-webkit-keyframes slideX {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    @-moz-keyframes slideX {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    @keyframes slideX {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+}
+@mixin slide($percentage,$duration,$timing,$delay,$direction) {
+    -webkit-animation-name: slide;
+    -moz-animation-name: slide;
+    animation-name: slide;
+
+    -webkit-animation-duration: $duration;
+    -moz-animation-duration: $duration;
+    animation-duration: $duration;
+
+    -webkit-animation-timing-function: $timing;
+    -moz-animation-timing-function: $timing;
+    animation-timing-function: $timing;
+
+    -webkit-animation-delay: $delay;
+    -moz-animation-delay: $delay;
+    animation-delay: $delay;
+
+    -webkit-animation-direction: $direction;
+    -moz-animation-direction: $direction;
+    animation-direction: $direction;
+
+    @-webkit-keyframes slide {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX($percentage);
+        }
+    }
+    @-moz-keyframes slide {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX($percentage);
+        }
+    }
+    @keyframes slide {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX($percentage);
+        }
+    }
+}
+
+@mixin fade($duration,$timing,$delay,$direction) {
+    -webkit-animation-name: fade;
+    -moz-animation-name: fade;
+    animation-name: fade;
+
+    -webkit-animation-duration: $duration;
+    -moz-animation-duration: $duration;
+    animation-duration: $duration;
+
+    -webkit-animation-timing-function: $timing;
+    -moz-animation-timing-function: $timing;
+    animation-timing-function: $timing;
+
+    -webkit-animation-delay: $delay;
+    -moz-animation-delay: $delay;
+    animation-delay: $delay;
+
+    -webkit-animation-direction: $direction;
+    -moz-animation-direction: $direction;
+    animation-direction: $direction;
+
+    @-webkit-keyframes fade {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @-moz-keyframes fade {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes fade {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+}
+@mixin scale($multiplier,$duration,$timing,$delay,$direction) {
+    -webkit-animation-name: scale;
+    -moz-animation-name: scale;
+    animation-name: scale;
+
+    -webkit-animation-duration: $duration;
+    -moz-animation-duration: $duration;
+    animation-duration: $duration;
+
+    -webkit-animation-timing-function: $timing;
+    -moz-animation-timing-function: $timing;
+    animation-timing-function: $timing;
+
+    -webkit-animation-delay: $delay;
+    -moz-animation-delay: $delay;
+    animation-delay: $delay;
+
+    -webkit-animation-direction: $direction;
+    -moz-animation-direction: $direction;
+    animation-direction: $direction;
+
+    @-webkit-keyframes scale {
+        0% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale($multiplier);
+        }
+    }
+    @-moz-keyframes scale {
+        0% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale($multiplier);
+        }
+    }
+    @keyframes scale {
+        0% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale($multiplier);
+        }
+    }
+}
+@mixin scaleOnHover($multiplier) {
+    &:hover {
+        transform: scale($multiplier);
+    }
+}
+
+@mixin rotate($degree,$duration,$timing,$delay,$direction) {
+    -webkit-animation-name: rotate;
+    -moz-animation-name: rotate;
+    animation-name: rotate;
+
+    -webkit-animation-duration: $duration;
+    -moz-animation-duration: $duration;
+    animation-duration: $duration;
+
+    -webkit-animation-timing-function: $timing;
+    -moz-animation-timing-function: $timing;
+    animation-timing-function: $timing;
+
+    -webkit-animation-delay: $delay;
+    -moz-animation-delay: $delay;
+    animation-delay: $delay;
+
+    -webkit-animation-direction: $direction;
+    -moz-animation-direction: $direction;
+    animation-direction: $direction;
+
+    @-webkit-keyframes rotate {
+        0% {
+            transform: rotate($degree);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+    @-moz-keyframes rotate {
+        0% {
+            transform: rotate($degree);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+    @keyframes rotate {
+        0% {
+            transform: rotate($degree);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+}
+@mixin rotateOnHover($degree) {
+    &:hover {
+        transform: rotate($degree);
+    }
+}
+@mixin mix-animation($name,$duration,$timing,$delay,$direction) {
+    -webkit-animation-name: $name;
+    -moz-animation-name: $name;
+    animation-name: $name;
+
+    -webkit-animation-duration: $duration;
+    -moz-animation-duration: $duration;
+    animation-duration: $duration;
+
+    -webkit-animation-timing-function: $timing;
+    -moz-animation-timing-function: $timing;
+    animation-timing-function: $timing;
+
+    -webkit-animation-delay: $delay;
+    -moz-animation-delay: $delay;
+    animation-delay: $delay;
+
+    -webkit-animation-direction: $direction;
+    -moz-animation-direction: $direction;
+    animation-direction: $direction;
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+} 

@@ -1,0 +1,39 @@
+@import "@/assets/scss/_variables.scss";
+
+@mixin button {
+  width: 150px;
+  height: 40px;
+  border-radius: 4px;
+  color: $white;
+  border: 0;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px 16px;
+  outline: none;
+  transition: all ease 0.2s;
+  cursor: pointer;
+}
+@mixin input {
+  width: 50%;
+  height: 32px;
+  border: 1px solid $table-border;
+  outline: none;
+  border-radius: 4px;
+  padding: 5px;
+  font-family: "Noto Sans Thai", sans-serif;
+  &:focus {
+    border-color: $primary;
+  }
+}
+@mixin button-input {
+  width: 50%;
+  height: 32px;
+  border: 1px solid;
+  background-color: $primary-too;
+  outline: none;
+  border-radius: 4px;
+  padding: 5px;
+  color: $white;
+  font-family: "Noto Sans Thai", sans-serif;
+}
+
