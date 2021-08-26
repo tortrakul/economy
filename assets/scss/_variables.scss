@@ -1,4 +1,15 @@
 $font-family-base: 'Noto Sans Thai';
 
+$theme-colors: (
+    "primary": #91c962
+);
+
 $body-bg: #efefef;
 
+$link-color: $body-color;
+$link-decoration: none;
+$link-hover-color: theme-color('primary');
+$link-hover-decoration: none;
+
+$card-border-radius: 1.5rem;
+$card-inner-border-radius: $card-border-radius;
