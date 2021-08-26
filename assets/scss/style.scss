@@ -16,3 +16,11 @@
 [class^="material-icons"] {
     vertical-align: middle;
 }
+
+.input-group-prepend {
+
+    + .form-control {
+        padding-left: 2px;
+        border-left: none;
+    }
+}

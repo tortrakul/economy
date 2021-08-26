@@ -1,120 +1,65 @@
 <template>
-  <section class="container tile">
-    <h1>รายชื่อสวน</h1>
-    <div class="container search">
-      <div class="title">
-        <button>
-          <a href>
-            <i class="material-icons">add</i>เพิ่มรายการ
-          </a>
-        </button>
-      </div>
-      <div class="content">
-        <img src="/svg/search.svg">
-        <input placeholder="ค้นหา">
-      </div>
-      <div class="content-filter">
-        <div class="filter"></div>
-      </div>
+    <div>
+        <div class="card card-body mb-3">
+            <h5 class="card-title">รายชื่อสวน</h5>
+
+            <div class="d-flex mb-5">
+                <button class="btn btn-primary pr-4 border-0 text-nowrap text-white" style="background-image: linear-gradient(to right, #6ac85b, #dbed02);">
+                    <i class="material-icons">add</i> เพิ่มสวน
+                </button>
+
+                <div class="input-group mx-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="material-icons">search</i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="ค้นหา" />
+                </div>
+
+                <button class="btn btn-default">
+                    <span class="material-icons-outlined">tune</span>
+                </button>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-3" v-for="(tag,index) in tags" :key="index">
+                    <TagCard
+                        class="mb-3"
+                        cover="assets/Picture.png"
+                        title="ชื่อสวน"
+                        subtitle="จังหวัด"
+                        profile="assets/Picture.png"
+                        name="ชื่อเจ้าของสวน"
+                        tag-class="primary"
+                        tag-label="Lorem ipsum" />
+
+                    <nuxt-link to="/farms/detail" class="stretched-link" />
+                </div>
+            </div>
+        </div>
+
+        <nav class="d-flex">
+            <ul class="pagination ml-auto">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
     </div>
-    <nuxt-link to="/farms/detail">
-      <div class="farm-lists">
-        <!-- // ดึงตัวนี้ออกมาใช้ -->
-        <TagCard v-for="(tag,index) in tags" :key="index" :tag="tag"/>
-      </div>
-    </nuxt-link>
-  </section>
 </template>
 
 <script>
-import TagCard from "~/components/tagCard";
+import TagCard from '~/components/TagCard';
 
 export default {
   components: {
     TagCard
   },
-  // ดึงตัวนี้ออกมาใช้
   data() {
     return {
-      tags: [1, 2, 3, 4, 5],
-    };
+      tags: [1, 2, 3, 4, 5, 6, 7, 8]
+    }
   }
-};
+}
 </script>
-
-<style lang="scss" scoped>
-@import "@/assets/scss/_variables.scss";
-a {
-  text-decoration: none;
-}
-.container {
-  .farm-lists {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .farm-lists {
-    margin-top: 18px;
-  }
-  .search {
-    display: flex;
-    button {
-      width: 140px;
-      height: 40px;
-      border-radius: 30px;
-      border: none;
-      background-image: linear-gradient(to right, #6ac85b, #dbed02);
-      font-family: "Noto Sans Thai", sans-serif;
-      margin: 8px 0;
-      i {
-        vertical-align: middle;
-      }
-      a {
-        color: $white;
-        text-decoration: none;
-      }
-    }
-    .content {
-      padding: 0;
-      position: relative;
-      input {
-        width: 100%;
-        height: 40px;
-        border-radius: 30px;
-        border: 0;
-        font-family: "Noto Sans Thai", sans-serif;
-        margin: 8px;
-        box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.2);
-        padding: 10px;
-        padding-left: 30px;
-        outline: none;
-      }
-      img {
-        position: absolute;
-        vertical-align: middle;
-        margin: 0px;
-        width: 15px;
-        height: 15px;
-        top: 37.7%;
-        left: 2.5%;
-        &:hover {
-        }
-      }
-    }
-    .content-filter {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 67px;
-      .filter {
-        mask: url(/svg/Filter.svg) no-repeat;
-        width: 22px;
-        height: 22px;
-        background-color: $dark;
-        &:hover {
-          background-color: $primary;
-        }
-      }
-    }
-  }
-}
-</style>

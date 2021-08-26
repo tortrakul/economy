@@ -11,5 +11,13 @@ $link-decoration: none;
 $link-hover-color: theme-color('primary');
 $link-hover-decoration: none;
 
+$border-radius: 1.5rem;
+
 $card-border-radius: 1.5rem;
 $card-inner-border-radius: $card-border-radius;
+
+$input-border-radius: $border-radius;
+
+$btn-border-radius: $border-radius;
+
+$input-group-addon-bg: #fff;
