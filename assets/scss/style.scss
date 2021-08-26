@@ -1,27 +1,14 @@
-//Typography
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: $heading-color;
-  font-weight: normal;
-}
-h1 {
-  font-size: 1.5em;
-}
-//Structure
-.tile {
-  background-color: $white;
-  border-radius: 15px;
-  padding: 16px;
-  box-shadow: $box-shadow;
-  border: 1px solid $border-color;
-}
+@import '../typeface/NotoSansThai.css';
 
-.select-wrapper {
-  select::placeholder {
-    text-align: center;
-  }
+@import 'bootstrap/scss/_functions.scss';
+@import 'bootstrap/scss/_variables.scss';
+@import 'bootstrap/scss/_mixins.scss';
+
+@import 'variables';
+
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap-vue/src/index.scss';
+
+* {
+    font-family: $font-family-base;
 }
