@@ -1,34 +1,23 @@
 <template>
-  <div class="container">
-    <div class="content">
-      <WeatherReport/>
-      <weather_overall/>
+    <div>
+        <WeatherReport class="mb-3" />
+
+        <AccountSummary class="mb-3" />
+
+        <WeatherOverall />
     </div>
-    <Notification/>
-  </div>
 </template>
 
 <script>
-import WeatherReport from "~/components/weatherReport";
-import weather_overall from "~/components/friend/Dashboard/weather_overall";
-import Notification from "~/components/layout/Notification";
+import WeatherReport from '~/components/WeatherReport';
+import AccountSummary from '~/components/AccountSummary';
+import WeatherOverall from '~/components/WeatherOverall';
 
 export default {
-  components: {
-    WeatherReport,
-    weather_overall,
-    Notification
-  }
-};
-</script>
-<style lang="scss" scoped>
-@import "@/assets/scss/_variables.scss";
-@import "@/assets/scss/_responsive.scss";
-.container {
-  display: flex;
-  .content {
-    padding-right: 12px;
-    padding-left: 0;
-  }
+    components: {
+        WeatherReport,
+        AccountSummary,
+        WeatherOverall
+    }
 }
-</style>
+</script>
