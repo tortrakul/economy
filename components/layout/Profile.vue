@@ -7,8 +7,18 @@
 
         <div class="card-footer bg-white">
             <a href="#" class="d-flex justify-content-center align-items-center">
-                <img src="~/static/svg/edit.svg" class="mr-2"> แก้ไข
+                <Edit class="mr-1" /> แก้ไข
             </a>
         </div>
     </div>
 </template>
+
+<script>
+import Edit from '~/components/icons/Edit';
+
+export default {
+    components: {
+        Edit
+    }
+}
+</script>
