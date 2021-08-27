@@ -4,7 +4,7 @@
             <h5 class="card-title">รายชื่อสวน</h5>
 
             <div class="d-flex mb-5">
-                <button class="btn btn-primary pr-4 border-0 text-nowrap text-white" style="background-image: linear-gradient(to right, #6ac85b, #dbed02);">
+                <button class="btn btn-gradient-primary pr-3 text-nowrap">
                     <i class="material-icons">add</i> เพิ่มสวน
                 </button>
 

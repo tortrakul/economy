@@ -13,6 +13,14 @@
     font-family: $font-family-base;
 }
 
+.btn-gradient-primary,
+.btn-gradient-primary:hover,
+.btn-gradient-primary:focus {
+    background-image: linear-gradient(to right, theme-color('primary'), #dbed02);
+    color: #fff;
+    border: none;
+}
+
 [class^="material-icons"] {
     vertical-align: middle;
 }
