@@ -53,7 +53,7 @@ export default {
             }, {
                 name: 'รายการสั่งซื้อทั้งหมด',
                 icon: 'List',
-                path: '/korders'
+                path: '/orders'
             }]
         }
     }
