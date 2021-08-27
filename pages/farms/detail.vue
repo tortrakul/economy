@@ -1,26 +1,19 @@
 <template>
-  <div>
-    <FarmCard name="สวนกระท้อน"/>
-    <FarmCardFooter/>
-  </div>
+    <div>
+        <FarmCard name="สวนกระท้อน" class="mb-3" />
+
+        <FarmLocation />
+    </div>
 </template>
 
 <script>
-export default {
-  data(){
-    return {
-    }
-  }
-}
-</script>
+import FarmCard from '~/components/FarmCard';
+import FarmLocation from '~/components/FarmLocation';
 
-<script>
-import FarmCard from "~/components/friend/Farm/FarmCard";
-import FarmCardFooter from "~/components/friend/Farm/FarmCardFooter";
 export default {
-  components: {
-    FarmCard,
-    FarmCardFooter
-  }
-};
+    components: {
+        FarmCard,
+        FarmLocation
+    }
+}
 </script>
