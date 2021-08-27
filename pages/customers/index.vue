@@ -1,101 +1,60 @@
 <template>
-  <section class="container tile">
-    <h1>รายชื่อลูกค้า</h1>
-    <div class="container search">
-      <div class="content">
-        <img src="/svg/search.svg">
-        <input placeholder="ค้นหา">
-      </div>
-      <div class="content-filter">
-        <div class="filter"></div>
-      </div>
-    </div>
+    <div>
+        <div class="card card-body mb-3">
+            <h5 class="card-title">รายชื่อลูกค้า</h5>
 
-    <nuxt-link to="/customers/detail">
-      <div class="customer-lists">
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-      </div>
-    </nuxt-link>
-  </section>
+            <div class="d-flex mb-5">
+                <button class="btn btn-gradient-primary pr-3 text-nowrap">
+                    <i class="material-icons">add</i> เพิ่มลูกค้า
+                </button>
+
+                <div class="input-group mx-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="material-icons">search</i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="ค้นหา" />
+                </div>
+
+                <button class="btn btn-default">
+                    <span class="material-icons-outlined">tune</span>
+                </button>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="position-relative">
+                        <CustomerCard />
+
+                        <nuxt-link to="/customers/detail" class="stretched-link" />
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="position-relative">
+                        <CustomerCard />
+
+                        <nuxt-link to="/customers/detail" class="stretched-link" />
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="position-relative">
+                        <CustomerCard />
+
+                        <nuxt-link to="/customers/detail" class="stretched-link" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
-import Card from "~/components/card";
+import CustomerCard from '~/components/CustomerCard';
 
 export default {
-  components: {
-    Card
-  }
-};
+    components: {
+        CustomerCard
+    }
+}
 </script>
-
-<style lang="scss" scoped>
-@import "@/assets/scss/_variables.scss";
-a {
-  text-decoration: none;
-  color: $dark;
-}
-.container {
-  .customer-lists {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .search {
-    display: flex;
-
-    .content {
-      padding: 0;
-      position: relative;
-      input {
-        width: 100%;
-        height: 40px;
-        border-radius: 30px;
-        border: 0;
-        font-family: "Noto Sans Thai", sans-serif;
-        margin: 8px 0;
-        box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.2);
-        padding: 10px;
-        padding-left: 30px;
-        outline: none;
-      }
-      img {
-        position: absolute;
-        vertical-align: middle;
-        margin: 0px;
-        width: 15px;
-        height: 15px;
-        bottom: 20px;
-        left: 11px;
-      }
-      a svg:hover {
-        fill: $primary;
-      }
-    }
-    .content-filter {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 67px;
-      .filter {
-        mask: url(/svg/Filter.svg) no-repeat;
-        width: 22px;
-        height: 22px;
-        background-color: $dark;
-        &:hover {
-          background-color: $primary;
-        }
-      }
-    }
-  }
-}
-</style>
