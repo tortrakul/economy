@@ -39,11 +39,25 @@
 
         <nav class="d-flex">
             <ul class="pagination ml-auto">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                <li class="page-item">
+                    <a class="page-link text-secondary" href="#">
+                        <span class="material-icons small">chevron_left</span>
+                    </a>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link text-secondary" href="#">1</a>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link text-secondary" href="#">2</a>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link text-secondary" href="#">
+                        <span class="material-icons small">chevron_right</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
