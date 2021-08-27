@@ -44,7 +44,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .navbar-expand-lg .navbar-nav .dropdown-menu {
     position: absolute;
 }
