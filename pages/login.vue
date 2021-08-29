@@ -3,33 +3,33 @@
         <h4 class="card-title font-weight-bold text-center">เข้าสู่ระบบ</h4>
 
         <form @submit.prevent="onSubmit">
-        <div class="form-group row">
-            <label class="col-lg-2 col-form-label">ชื่อผู้ใช้งาน</label>
-            <div class="col-lg-10">
-                <input v-model="email" type="text" class="form-control" />
+            <div class="form-group row">
+                <label class="col-lg-2 col-form-label">ชื่อผู้ใช้งาน</label>
+                <div class="col-lg-10">
+                    <input v-model="email" type="text" class="form-control" />
+                </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-lg-2 col-form-label">รหัสผู้ใช้งาน</label>
-            <div class="col-lg-10">
-                <input v-model="password" type="password" class="form-control" />
+            <div class="form-group row">
+                <label class="col-lg-2 col-form-label">รหัสผู้ใช้งาน</label>
+                <div class="col-lg-10">
+                    <input v-model="password" type="password" class="form-control" />
+                </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <div class="offset-lg-2 col-lg-10">
-                <label>
-                    <input type="checkbox" /> จำฉันไว้ในระบบ
-                </label>
+            <div class="form-group row">
+                <div class="offset-lg-2 col-lg-10">
+                    <label>
+                        <input type="checkbox" /> จำฉันไว้ในระบบ
+                    </label>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <div class="offset-lg-2 col-lg-10">
-                <button class="btn btn-gradient-primary px-4" type="submit">เข้าสู่ระบบ</button>
+            <div class="form-group row">
+                <div class="offset-lg-2 col-lg-10">
+                    <button class="btn btn-gradient-primary px-4" type="submit">เข้าสู่ระบบ</button>
+                </div>
             </div>
-        </div>
         </form>
 
         <hr />
