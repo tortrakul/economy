@@ -41,6 +41,10 @@ export default {
     'bootstrap-vue/nuxt',
   ],
 
+  axios: {
+    baseURL: process.env.BASE_API
+  },
+
   bootstrapVue: {
     bootstrapCSS: false,
     bootstrapVueCSS: false
