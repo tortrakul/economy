@@ -14,7 +14,7 @@
                     <Notification />
                 </b-nav-item-dropdown>
 
-                <b-nav-item href="#" class="pl-4">
+                <b-nav-item @click.prevent="logout" href="#" class="pl-4">
                     <span class="material-icons-outlined">power_settings_new</span>
                     <span class="d-none d-lg-inline-block">ออกจากระบบ</span>
                 </b-nav-item>
@@ -40,6 +40,12 @@ import Notification from '~/components/layout/Notification';
 export default {
     components: {
         Notification
+    },
+    methods: {
+        async logout() {
+            await this.$auth.logout()
+            this.$router.push('/login')
+        }
     }
 }
 </script>

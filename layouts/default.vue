@@ -22,6 +22,7 @@ import Profile from '~/components/layout/Profile';
 import MenuList from '~/components/layout/MenuList';
 
 export default {
+    middleware: 'auth',
     components: {
         Navbar,
         Profile,

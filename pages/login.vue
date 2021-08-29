@@ -2,17 +2,18 @@
     <div class="card card-body">
         <h4 class="card-title font-weight-bold text-center">เข้าสู่ระบบ</h4>
 
+        <form @submit.prevent="onSubmit">
         <div class="form-group row">
             <label class="col-lg-2 col-form-label">ชื่อผู้ใช้งาน</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" />
+                <input v-model="email" type="text" class="form-control" />
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-lg-2 col-form-label">รหัสผู้ใช้งาน</label>
             <div class="col-lg-10">
-                <input type="password" class="form-control" />
+                <input v-model="password" type="password" class="form-control" />
             </div>
         </div>
 
@@ -26,9 +27,10 @@
 
         <div class="form-group row">
             <div class="offset-lg-2 col-lg-10">
-                <button class="btn btn-gradient-primary px-4">เข้าสู่ระบบ</button>
+                <button class="btn btn-gradient-primary px-4" type="submit">เข้าสู่ระบบ</button>
             </div>
         </div>
+        </form>
 
         <hr />
 
@@ -43,6 +45,27 @@
 
 <script>
 export default {
-    layout: 'auth'
+    layout: 'auth',
+    data: () => ({
+        email: '',
+        password: ''
+    }),
+    methods: {
+        async onSubmit () {
+            try {
+                await this.$auth.loginWith('local', {
+                    data: { email: this.email, password: this.password }
+                })
+
+                this.$router.push('/')
+            } catch (e) {
+                this.$bvToast.toast('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง', {
+                    title: 'เกิดข้อผิดพลาด',
+                    toaster: 'b-toaster-bottom-center',
+                    variant: 'danger'
+                })
+            }
+        }
+    }
 }
 </script>
