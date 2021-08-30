@@ -229,13 +229,13 @@ export default {
 
             await this.register({
                 name: this.name,
-                birthDay: this.birthDay,
-                id: this.id,
+                birth_date: this.birthDay,
+                citizen_id: this.id,
                 tel: this.tel,
-                lineID: this.lineID,
+                line: this.lineID,
                 address: this.address,
-                subDistrict: this.subDistrict,
-                zipCode: this.zipCode,
+                sub_district_id: this.subDistrict,
+                zip_code: this.zipCode,
                 email: this.email,
                 username: this.username,
                 password: this.password

@@ -45,6 +45,7 @@
 
 <script>
 export default {
+    auth: 'guest',
     layout: 'auth',
     data: () => ({
         email: '',
@@ -54,7 +55,7 @@ export default {
         async onSubmit () {
             try {
                 await this.$auth.loginWith('local', {
-                    data: { email: this.email, password: this.password }
+                    data: { email: this.email, password: this.password, device_name: '-' }
                 })
 
                 this.$router.push('/')

@@ -50,14 +50,15 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login: { url: 'login', method: 'post', propertyName: 'accessToken' },
-          user: { url: 'GetAccount', method: 'get', propertyName: 'data' },
-          logout: false
+          login: { url: 'login', method: 'post', propertyName: 'access_token' },
+          logout: { url: 'logout', method: 'post', propertyName: '' },
+          user: { url: 'me', method: 'get', propertyName: 'data' }
         }
       }
     },
     redirect: {
-      login: '/login'
+      login: '/login',
+      home: '/'
     }
   },
 
