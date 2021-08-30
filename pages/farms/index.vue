@@ -12,7 +12,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="material-icons">search</i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="ค้นหา" />
+                    <input @change="e => all({ search: e.target.value })" type="text" class="form-control" placeholder="ค้นหา" />
                 </div>
 
                 <button class="btn btn-default">
@@ -21,14 +21,14 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6 col-lg-3" v-for="(tag,index) in tags" :key="index">
+                <div class="col-md-6 col-lg-3" v-for="(farm,index) in list" :key="index">
                     <TagCard
                         class="mb-3"
                         cover="assets/Picture.png"
-                        title="ชื่อสวน"
-                        subtitle="จังหวัด"
+                        :title="farm.name"
+                        :subtitle="farm.address.sub_district.district.province.name"
                         profile="assets/Picture.png"
-                        name="ชื่อเจ้าของสวน"
+                        :name="farm.owner.name"
                         tag-class="primary"
                         tag-label="Lorem ipsum" />
 
@@ -36,44 +36,35 @@
                 </div>
             </div>
         </div>
-
-        <nav class="d-flex">
-            <ul class="pagination ml-auto">
-                <li class="page-item">
-                    <a class="page-link text-secondary" href="#">
-                        <span class="material-icons small">chevron_left</span>
-                    </a>
-                </li>
-
-                <li class="page-item">
-                    <a class="page-link text-secondary" href="#">1</a>
-                </li>
-
-                <li class="page-item">
-                    <a class="page-link text-secondary" href="#">2</a>
-                </li>
-
-                <li class="page-item">
-                    <a class="page-link text-secondary" href="#">
-                        <span class="material-icons small">chevron_right</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <b-pagination
+            value="1"
+            :total-rows="meta.total"
+            :per-page="meta.per_page"
+            @change="page => all({ page })" />
     </div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 import TagCard from '~/components/TagCard';
 
 export default {
   components: {
     TagCard
   },
-  data() {
-    return {
-      tags: [1, 2, 3, 4, 5, 6, 7, 8]
-    }
+  methods: {
+    ...mapActions({
+        all: 'farm/all'
+    })
+  },
+  computed: {
+    ...mapState('farm', [
+        'list',
+        'meta'
+    ])
+  },
+  mounted () {
+    this.all()
   }
 }
 </script>
