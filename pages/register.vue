@@ -117,7 +117,7 @@
                     <div class="col-lg-10">
                         <div class="custom-file">
                             <input @change="handleFileUpload()" ref="avatar" type="file" class="custom-file-input" id="profile" :class="{ 'is-invalid': $v.avatar.$error }">
-                            <label class="custom-file-label" for="profile">เลือกไฟล์</label>
+                            <label class="custom-file-label" for="profile">{{ $data['avatar'] ? $data['avatar'].name : 'เลือกไฟล์' }}</label>
                         <div v-if="!$v.avatar.required" class="invalid-feedback">กรุณากรอก รูปภาพประจำตัว</div>
                         </div>
                     </div>
