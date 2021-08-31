@@ -1,6 +1,6 @@
 <template>
     <div>
-        <FarmCard v-if="row" :farm="row" class="mb-3" />
+        <FarmCard v-if="row" class="mb-3" />
 
         <FarmLocation v-if="row" :key="`${row.lat},${row.lng}`" :lat="row.lat" :lng="row.lng" />
     </div>
