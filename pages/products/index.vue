@@ -4,15 +4,16 @@
             <h5 class="card-title">รายชื่อสินค้า</h5>
 
             <div class="d-flex mb-5">
-                <button class="btn btn-gradient-primary pr-3 text-nowrap">
+                <router-link to="/products/create" class="btn btn-gradient-primary pr-3 text-nowrap">
                     <i class="material-icons">add</i> เพิ่มสินค้า
-                </button>
+                </router-link>
 
                 <div class="input-group mx-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="material-icons">search</i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="ค้นหา" />
+
+                    <input @change="e => all({ search: e.target.value })" type="text" class="form-control" placeholder="ค้นหา" />
                 </div>
 
                 <button class="btn btn-default">
@@ -21,59 +22,50 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6 col-lg-3" v-for="(tag,index) in tags" :key="index">
+                <div class="col-md-6 col-lg-3" v-for="(product,index) in list" :key="index">
                     <TagCard
                         class="mb-3"
-                        cover="assets/Picture.png"
-                        title="ชื่อสินค้า"
-                        subtitle="8 บาท/kg"
-                        profile="assets/Picture.png"
-                        name="สวนภูวิไล"
+                        :cover="product.cover"
+                        :title="product.name"
+                        :subtitle="`${product.unit_price} บาท/kg`"
+                        :profile="product.farm_avatar"
+                        :name="product.farm"
                         tag-class="primary"
                         tag-label="Lorem ipsum" />
 
-                    <nuxt-link to="/products/detail" class="stretched-link" />
+                    <nuxt-link :to="`/products/${product.id}`" class="stretched-link" />
                 </div>
             </div>
         </div>
-
-        <nav class="d-flex">
-            <ul class="pagination ml-auto">
-                <li class="page-item">
-                    <a class="page-link text-secondary" href="#">
-                        <span class="material-icons small">chevron_left</span>
-                    </a>
-                </li>
-
-                <li class="page-item">
-                    <a class="page-link text-secondary" href="#">1</a>
-                </li>
-
-                <li class="page-item">
-                    <a class="page-link text-secondary" href="#">2</a>
-                </li>
-
-                <li class="page-item">
-                    <a class="page-link text-secondary" href="#">
-                        <span class="material-icons small">chevron_right</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <b-pagination
+            value="1"
+            :total-rows="meta.total"
+            :per-page="meta.per_page"
+            @change="page => all({ page })" />
     </div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 import TagCard from '~/components/TagCard';
 
 export default {
   components: {
     TagCard
   },
-  data() {
-    return {
-      tags: [1, 2, 3, 4, 5, 6, 7, 8]
-    }
+  methods: {
+    ...mapActions({
+        all: 'product/all'
+    })
+  },
+  computed: {
+    ...mapState('product', [
+        'list',
+        'meta'
+    ])
+  },
+  mounted () {
+    this.all()
   }
 }
 </script>
