@@ -2,40 +2,40 @@
     <div class="card">
         <div class="card-header d-flex flex-column flex-lg-row bg-white">
             <div class="d-flex align-items-center">
-                <a href="#" class="btn btn-sm btn-default">
+                <router-link to="/farms" class="btn btn-sm btn-default">
                     <i class="material-icons">chevron_left</i>
-                </a>
+                </router-link>
 
-                <h5 class="card-title mb-0">{{ name }}</h5>
+                <h5 class="card-title mb-0">{{ farm.name }}</h5>
             </div>
 
             <div class="d-flex align-items-center ml-auto">
-                <a href="#" class="btn btn-sm btn-default">
+                <router-link :to="`/farms/${farm.id}/edit`" class="btn btn-sm btn-default">
                     <Edit /> <span class="d-none d-lg-inline ml-1">แก้ไขรายละเอียดสวน</span>
-                </a>
+                </router-link>
 
-                <a href="#" class="btn btn-sm btn-default text-danger">
+                <button v-b-modal.modal-confirm-delete class="btn btn-sm btn-default text-danger">
                     <Delete /> <span class="d-none d-lg-inline ml-1">ลบรายชื่อ</span>
-                </a>
+                </button>
             </div>
         </div>
 
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-5">
-                    <img src="~/assets/img/farm.jpg" class="rounded img-fluid w-100 mb-2" />
+                    <img :src="farm.media[0]" class="rounded img-fluid w-100 mb-2" />
 
                     <div class="row no-gutters">
                         <div class="col">
-                            <img src="~/assets/img/farm.jpg" class="p-1 img-fluid rounded" />
+                            <img :src="farm.media[1]" class="p-1 img-fluid rounded" />
                         </div>
 
                         <div class="col">
-                            <img src="~/assets/img/farm.jpg" class="p-1 img-fluid rounded" />
+                            <img :src="farm.media[2]" class="p-1 img-fluid rounded" />
                         </div>
 
                         <div class="col">
-                            <img src="~/assets/img/farm.jpg" class="p-1 img-fluid rounded" />
+                            <img :src="farm.media[3]" class="p-1 img-fluid rounded" />
                         </div>
                     </div>
                 </div>
@@ -44,48 +44,65 @@
                     <table class="table">
                         <tr class="d-flex flex-column d-lg-table-row">
                             <td class="border-0 text-nowrap font-weight-bold">ชื่อสวน</td>
-                            <td class="border-0">สวนภูวิไล</td>
+                            <td class="border-0">{{ farm.name }}</td>
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">
                             <td class="border-0 text-nowrap font-weight-bold">เจ้าของ</td>
-                            <td class="border-0">John Doe</td>
+                            <td class="border-0">{{ farm.owner }}</td>
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">
                             <td class="border-0 text-nowrap font-weight-bold">เบอร์โทรศัพท์</td>
-                            <td class="border-0">xxx-xxxxxxx</td>
+                            <td class="border-0">{{ farm.tel }}</td>
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">
                             <td class="border-0 text-nowrap font-weight-bold">ที่อยู่สวน</td>
-                            <td class="border-0">ตู้ ปณ. 72 ปณจ. ฝาง อำเภอฝาง จังหวัดเชียงใหม่ 50110</td>
+                            <td class="border-0">
+                                {{ farm.address }}
+                                {{ farm.sub_district }}
+                                {{ farm.district }}
+                                {{ farm.province }}
+                                {{ farm.zip_code }}
+                            </td>
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">
                             <td class="border-0 text-nowrap font-weight-bold">รายละเอียด</td>
-                            <td class="border-0">
-                                สวนส้ม ธนาธร เป็นสวนส้มที่สามารถปลูกส้มได้มากกว่า 10 สายพันธุ์
-                                แต่ทีรู้จักกันดี คือ ส้มสายน้ำผึ้ง ส้มฟรีมองต์ธนาธร และปัจจุบัน ได้พัฒนา
-                                ให้กลายเป็นแหล่งท่องเที่ยวสามารถ เข้าไปชมสวนและชิมส้มสด ๆ
-                            </td>
+                            <td class="border-0">{{ farm.description }}</td>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
+
+        <b-modal id="modal-confirm-delete" title="ยืนยัน" @ok="deleting" modal-ok="ยืนยัน" modal-cancel="ยกเลิก">
+            ยืนยันการลบข้อมูล
+        </b-modal>
     </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import Edit from '~/components/icons/Edit';
 import Delete from '~/components/icons/Delete';
 
 export default {
-    props: ['name'],
+    props: ['farm'],
     components: {
         Edit,
         Delete
+    },
+    methods: {
+        ...mapActions('farm', {
+            delete: 'delete'
+        }),
+        deleting () {
+            this.delete(this.farm.id).then(
+                () => this.$router.push('/farms')
+            )
+        }
     }
 }
 </script>

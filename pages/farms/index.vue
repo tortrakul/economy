@@ -4,14 +4,15 @@
             <h5 class="card-title">รายชื่อสวน</h5>
 
             <div class="d-flex mb-5">
-                <button class="btn btn-gradient-primary pr-3 text-nowrap">
+                <router-link to="/farms/create" class="btn btn-gradient-primary pr-3 text-nowrap">
                     <i class="material-icons">add</i> เพิ่มสวน
-                </button>
+                </router-link>
 
                 <div class="input-group mx-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="material-icons">search</i></span>
                     </div>
+
                     <input @change="e => all({ search: e.target.value })" type="text" class="form-control" placeholder="ค้นหา" />
                 </div>
 
@@ -24,15 +25,15 @@
                 <div class="col-md-6 col-lg-3" v-for="(farm,index) in list" :key="index">
                     <TagCard
                         class="mb-3"
-                        cover="assets/Picture.png"
+                        :cover="farm.cover"
                         :title="farm.name"
-                        :subtitle="farm.address.sub_district.district.province.name"
-                        profile="assets/Picture.png"
-                        :name="farm.owner.name"
+                        :subtitle="farm.province"
+                        :profile="farm.owner_avatar"
+                        :name="farm.owner"
                         tag-class="primary"
                         tag-label="Lorem ipsum" />
 
-                    <nuxt-link to="/farms/detail" class="stretched-link" />
+                    <nuxt-link :to="`/farms/${farm.id}`" class="stretched-link" />
                 </div>
             </div>
         </div>

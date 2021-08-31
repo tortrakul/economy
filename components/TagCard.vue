@@ -5,7 +5,9 @@
             {{ tagLabel }}
         </div>
 
-        <img :src="cover" class="rounded">
+        <div class="d-flex justify-content-center align-items-center w-100 overflow-hidden rounded" style="height: 150px; max-height: 150px;">
+            <img :src="cover" class="img-fluid rounded">
+        </div>
 
         <div class="p-2">
             <p class="mb-0 font-weight-bold">{{ title }}</p>
