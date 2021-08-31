@@ -116,7 +116,7 @@
                     <label class="col-lg-2 col-form-label">รูปภาพประจำตัว</label>
                     <div class="col-lg-10">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="profile">
+                            <input @change="handleFileUpload()" ref="avatar" type="file" class="custom-file-input" id="profile">
                             <label class="custom-file-label" for="profile">เลือกไฟล์</label>
                         </div>
                     </div>
@@ -210,6 +210,7 @@ export default {
         district: null,
         province: null,
         zipCode: '',
+        avatar: null,
         email: '',
         username: '',
         password: '',
@@ -221,6 +222,9 @@ export default {
         ...mapActions({
             register: 'account/register'
         }),
+        handleFileUpload () {
+            this.avatar = this.$refs.avatar.files[0]
+        },
         async onSubmit () {
             this.$v.$touch()
 
@@ -237,6 +241,7 @@ export default {
                 address: this.address,
                 sub_district_id: this.subDistrict,
                 zip_code: this.zipCode,
+                avatar: this.avatar,
                 email: this.email,
                 username: this.username,
                 password: this.password
