@@ -178,6 +178,7 @@ import { mapActions } from 'vuex'
 import { required, sameAs } from 'vuelidate/lib/validators'
 
 export default {
+    auth: 'guest',
     layout: 'auth',
 
     validations: {
