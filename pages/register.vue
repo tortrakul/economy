@@ -116,8 +116,9 @@
                     <label class="col-lg-2 col-form-label">รูปภาพประจำตัว</label>
                     <div class="col-lg-10">
                         <div class="custom-file">
-                            <input @change="handleFileUpload()" ref="avatar" type="file" class="custom-file-input" id="profile">
+                            <input @change="handleFileUpload()" ref="avatar" type="file" class="custom-file-input" id="profile" :class="{ 'is-invalid': $v.avatar.$error }">
                             <label class="custom-file-label" for="profile">เลือกไฟล์</label>
+                        <div v-if="!$v.avatar.required" class="invalid-feedback">กรุณากรอก รูปภาพประจำตัว</div>
                         </div>
                     </div>
                 </div>
@@ -192,6 +193,7 @@ export default {
         district: { required },
         province: { required },
         zipCode: { required },
+        avatar: { required },
         email: { required },
         username: { required },
         password: { required },
