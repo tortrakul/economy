@@ -45,10 +45,6 @@ export default {
                 icon: 'Farm',
                 path: '/farms'
             }, {
-                name: 'รายการสั่งซื้อทั้งหมด',
-                icon: 'List',
-                path: '/orders'
-            }, {
                 name: 'รายจ่าย',
                 icon: 'List',
                 path: '/expenses'

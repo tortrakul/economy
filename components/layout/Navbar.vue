@@ -16,7 +16,6 @@
                     <b-nav-item href="#">รายการสินค้า</b-nav-item>
                     <b-nav-item href="#">รายชื่อเกษตรกร</b-nav-item>
                     <b-nav-item href="#">รายชื่อสวน</b-nav-item>
-                    <b-nav-item href="#">รายการสั่งซื้อทั้งหมด</b-nav-item>
                 </b-navbar-nav>
             </b-collapse>
         </div>
