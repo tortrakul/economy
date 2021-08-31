@@ -4,16 +4,6 @@
             <b-navbar-toggle target="nav-collapse" class="border-0" />
 
             <b-navbar-nav class="flex-row ml-auto">
-                <b-nav-item-dropdown right no-caret>
-                    <template #button-content>
-                        <span class="material-icons text-success" style="font-size: 8px;">circle</span>
-                        <span class="material-icons-outlined">notifications</span>
-                        <span class="d-none d-lg-inline-block">แจ้งเตือน</span>
-                    </template>
-
-                    <Notification />
-                </b-nav-item-dropdown>
-
                 <b-nav-item @click.prevent="logout" href="#" class="pl-4">
                     <span class="material-icons-outlined">power_settings_new</span>
                     <span class="d-none d-lg-inline-block">ออกจากระบบ</span>
@@ -35,12 +25,7 @@
 </template>
 
 <script>
-import Notification from '~/components/layout/Notification';
-
 export default {
-    components: {
-        Notification
-    },
     methods: {
         async logout() {
             await this.$auth.logout()
