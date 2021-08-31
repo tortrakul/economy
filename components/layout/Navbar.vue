@@ -13,7 +13,6 @@
             <b-collapse id="nav-collapse" is-nav style="display: none !important;">
                 <b-navbar-nav>
                     <b-nav-item href="#">หน้าหลัก</b-nav-item>
-                    <b-nav-item href="#">รายชื่อลูกค้า</b-nav-item>
                     <b-nav-item href="#">รายการสินค้า</b-nav-item>
                     <b-nav-item href="#">รายชื่อเกษตรกร</b-nav-item>
                     <b-nav-item href="#">รายชื่อสวน</b-nav-item>

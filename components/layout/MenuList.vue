@@ -13,7 +13,6 @@
 
 <script>
 import Home from '~/components/icons/Home';
-import Customer from '~/components/icons/Customer';
 import Stock from '~/components/icons/Stock';
 import Farmer from '~/components/icons/Farmer';
 import Farm from '~/components/icons/Farm';
@@ -22,7 +21,6 @@ import List from '~/components/icons/List';
 export default {
     components: {
         Home,
-        Customer,
         Stock,
         Farmer,
         Farm,
@@ -34,10 +32,6 @@ export default {
                 name: 'หน้าหลัก',
                 icon: 'Home',
                 path: '/'
-            }, {
-                name: 'รายชื่อลูกค้า',
-                icon: 'Customer',
-                path: '/customers'
             }, {
                 name: 'รายการสินค้า',
                 icon: 'Stock',
