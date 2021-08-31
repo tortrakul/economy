@@ -258,20 +258,36 @@ export default {
                 email: this.email,
                 username: this.username,
                 password: this.password
-            }).then(({ successful }) => {
+            }).then(() => {
+                this.$bvToast.toast('คลิ๊กที่นี่เพื่อเข้าสู่ระบบ', {
+                    title: 'ลงทะเบียนเกษตรกรสำเร็จ',
+                    toaster: 'b-toaster-bottom-center',
+                    variant: 'success',
+                    noAutoHide: true,
+                    href: '/login',
+                })
 
-                if (successful) {
-                    this.$bvToast.toast('คลิ๊กที่นี่เพื่อเข้าสู่ระบบ', {
-                        title: 'ลงทะเบียนเกษตรกรสำเร็จ',
+                Object.assign(this.$data, this.$options.data.apply(this))
+                this.$v.$reset()
+            }).catch(error => {
+
+                if (error.response.status == 422) {
+                    this.$bvToast.toast('อีเมลหรือชื่อผู้ใช้งานถูกใช้ไปแล้ว', {
+                        title: 'เกิดข้อผิดพลาด',
                         toaster: 'b-toaster-bottom-center',
-                        variant: 'success',
-                        noAutoHide: true,
-                        href: '/login',
+                        variant: 'danger',
+                        noAutoHide: true
                     })
 
-                    Object.assign(this.$data, this.$options.data.apply(this))
-                    this.$v.$reset()
+                    return
                 }
+
+                this.$bvToast.toast('ไม่สามารถทำการลงทะเบียนได้', {
+                    title: 'เกิดข้อผิดพลาด',
+                    toaster: 'b-toaster-bottom-center',
+                    variant: 'danger',
+                    noAutoHide: true
+                })
             })
         }
     },
