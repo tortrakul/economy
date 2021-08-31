@@ -70,19 +70,19 @@
                         <div class="row mt-3">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <select v-model="subDistrict" class="form-control" :class="{ 'is-invalid': $v.subDistrict.$error }">
-                                        <option disabled :value="null">ตำบล</option>
-                                        <option value="1">ตำบล ก.</option>
+                                    <select v-model="province" @change="fetchDistricts(province)" class="form-control" :class="{ 'is-invalid': $v.province.$error }">
+                                        <option disabled :value="null">จังหวัด</option>
+                                        <option v-for="p in provinces" :value="p.id" :key="p.id">{{ p.name }}</option>
                                     </select>
-                                    <div v-if="!$v.subDistrict.required" class="invalid-feedback">กรุณากรอก ตำบล</div>
+                                    <div v-if="!$v.province.required" class="invalid-feedback">กรุณากรอก จังหวัด</div>
                                 </div>
                             </div>
 
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <select v-model="district" class="form-control" :class="{ 'is-invalid': $v.district.$error }">
+                                    <select v-model="district" @change="fetchSubDistricts(district)" class="form-control" :disabled="!districts.length" :class="{ 'is-invalid': $v.district.$error }">
                                         <option disabled :value="null">อำเภอ</option>
-                                        <option value="1">อำเภอ ก.</option>
+                                        <option v-for="d in districts" :value="d.id" :key="d.id">{{ d.name }}</option>
                                     </select>
                                     <div v-if="!$v.district.required" class="invalid-feedback">กรุณากรอก อำเภอ</div>
                                 </div>
@@ -90,11 +90,11 @@
 
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <select v-model="province" class="form-control" :class="{ 'is-invalid': $v.province.$error }">
-                                        <option disabled :value="null">จังหวัด</option>
-                                        <option value="1">จังหวัด ก.</option>
+                                    <select v-model="subDistrict" class="form-control" :disabled="!subDistricts.length" :class="{ 'is-invalid': $v.subDistrict.$error }">
+                                        <option disabled :value="null">ตำบล</option>
+                                        <option v-for="sd in subDistricts" :value="sd.id" :key="sd.id">{{ sd.name }}</option>
                                     </select>
-                                    <div v-if="!$v.province.required" class="invalid-feedback">กรุณากรอก จังหวัด</div>
+                                    <div v-if="!$v.subDistrict.required" class="invalid-feedback">กรุณากรอก ตำบล</div>
                                 </div>
                             </div>
 
@@ -174,7 +174,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import { required, sameAs } from 'vuelidate/lib/validators'
 
 export default {
@@ -218,9 +218,22 @@ export default {
         accept: null
     }),
 
+    computed: {
+        ...mapState('address', {
+            provinces: 'provinces',
+            districts: 'districts',
+            subDistricts: 'subDistricts'
+        })
+    },
+
     methods: {
         ...mapActions({
             register: 'account/register'
+        }),
+        ...mapActions('address', {
+            fetchProvinces: 'provinces',
+            fetchDistricts: 'districts',
+            fetchSubDistricts: 'subDistricts',
         }),
         handleFileUpload () {
             this.avatar = this.$refs.avatar.files[0]
@@ -261,6 +274,9 @@ export default {
                 }
             })
         }
+    },
+    mounted () {
+        this.fetchProvinces()
     }
 }
 </script>
