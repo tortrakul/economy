@@ -32,3 +32,8 @@
         border-left: none;
     }
 }
+
+a.nuxt-link-exact-active {
+    font-weight: bold !important;
+    color: theme-color('primary') !important;
+}

@@ -1,12 +1,23 @@
 <template>
     <div class="card card-body px-4">
-        <nuxt-link
-            class="d-flex align-items-center py-2"
-            v-for="(link, index) in links"
-            :key="index"
-            :to="{ path: link.path }">
-            <component :is="link.icon" class="mr-3" style="width: 18px; height: 18px;" />
-            {{link.name}}
+        <nuxt-link to="/" exact-path class="d-flex align-items-center py-2">
+            <Home class="mr-3" style="width: 18px; height: 18px;" /> หน้าแรก
+        </nuxt-link>
+
+        <nuxt-link to="/farms" class="d-flex align-items-center py-2">
+            <Farm class="mr-3" style="width: 18px; height: 18px;" /> รายชื่อสวน
+        </nuxt-link>
+
+        <nuxt-link to="/farmers" class="d-flex align-items-center py-2">
+            <Farmer class="mr-3" style="width: 18px; height: 18px;" /> รายชื่อเกษตรกร
+        </nuxt-link>
+
+        <nuxt-link to="/products" class="d-flex align-items-center py-2">
+            <Stock class="mr-3" style="width: 18px; height: 18px;" /> รายการสินค้า
+        </nuxt-link>
+
+        <nuxt-link to="/expenses" class="d-flex align-items-center py-2">
+            <List class="mr-3" style="width: 18px; height: 18px;" /> รายจ่าย
         </nuxt-link>
     </div>
 </template>
@@ -25,31 +36,6 @@ export default {
         Farmer,
         Farm,
         List
-    },
-    data() {
-        return {
-            links: [{
-                name: 'หน้าหลัก',
-                icon: 'Home',
-                path: '/'
-            }, {
-                name: 'รายชื่อสวน',
-                icon: 'Farm',
-                path: '/farms'
-            }, {
-                name: 'รายชื่อเกษตรกร',
-                icon: 'Farmer',
-                path: '/farmers'
-            }, {
-                name: 'รายการสินค้า',
-                icon: 'Stock',
-                path: '/products'
-            }, {
-                name: 'รายจ่าย',
-                icon: 'List',
-                path: '/expenses'
-            }]
-        }
     }
 }
 </script>

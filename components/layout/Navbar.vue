@@ -12,7 +12,7 @@
 
             <b-collapse id="nav-collapse" is-nav style="display: none !important;">
                 <b-navbar-nav>
-                    <b-nav-item to="/">หน้าหลัก</b-nav-item>
+                    <b-nav-item to="/" exact-path>หน้าหลัก</b-nav-item>
                     <b-nav-item to="/farms">รายชื่อสวน</b-nav-item>
                     <b-nav-item to="/farmers">รายชื่อเกษตรกร</b-nav-item>
                     <b-nav-item to="/products">รายการสินค้า</b-nav-item>
