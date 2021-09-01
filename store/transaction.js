@@ -3,7 +3,8 @@ const state = () => ({
   row: null,
   meta: {
     search: null,
-    per_page: 12
+    per_page: 12,
+    type: 'expense'
   }
 })
 

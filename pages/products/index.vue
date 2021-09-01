@@ -23,15 +23,11 @@
 
             <div class="row">
                 <div class="col-md-6 col-lg-3" v-for="(product,index) in list" :key="index">
-                    <TagCard
+                    <Card
                         class="mb-3"
                         :cover="product.cover"
                         :title="product.name"
-                        :subtitle="`${product.unit_price} บาท/kg`"
-                        :profile="product.farm_avatar"
-                        :name="product.farm"
-                        tag-class="primary"
-                        tag-label="Lorem ipsum" />
+                        :subtitle="`${product.amount} ${product.unit} / ${product.total} บาท <br /> ${product.date}`" />
 
                     <nuxt-link :to="`/products/${product.id}`" class="stretched-link" />
                 </div>
@@ -47,11 +43,11 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import TagCard from '~/components/TagCard';
+import Card from '~/components/Card';
 
 export default {
   components: {
-    TagCard
+    Card
   },
   methods: {
     ...mapActions({

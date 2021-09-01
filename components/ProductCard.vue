@@ -95,13 +95,13 @@
                 <div class="col-lg-7">
                     <table class="table">
                         <tr class="d-flex flex-column d-lg-table-row">
-                            <td class="border-0 text-nowrap font-weight-bold">ชื่อสินค้า</td>
+                            <td class="border-0 text-nowrap font-weight-bold">ชื่อ</td>
                             <td class="border-0">{{ product.name }}</td>
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">
                             <td class="border-0 text-nowrap font-weight-bold">จำนวน</td>
-                            <td class="border-0">{{ product.amount }} กก.</td>
+                            <td class="border-0">{{ product.amount }} {{ product.unit }}</td>
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">
@@ -110,13 +110,13 @@
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">
-                            <td class="border-0 text-nowrap font-weight-bold">วันที่เก็บเกี่ยว</td>
-                            <td class="border-0">{{ product.harvest_date }}</td>
+                            <td class="border-0 text-nowrap font-weight-bold">วันที่</td>
+                            <td class="border-0">{{ product.date }}</td>
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">
                             <td class="border-0 text-nowrap font-weight-bold">ราคา</td>
-                            <td class="border-0">{{ product.price }} บาท</td>
+                            <td class="border-0">{{ product.total }} บาท</td>
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">
@@ -169,7 +169,7 @@ export default {
         uploadingMedia (e, index) {
             this.uploadMedia({
                 id: this.product.id,
-                model: 'product',
+                model: 'transaction',
                 index: index,
                 media: e.target.files[0]
             }).then(() => this.find(this.product.id))

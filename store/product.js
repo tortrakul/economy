@@ -17,7 +17,7 @@ const actions = {
     let params = { ...state.meta, ...meta }
     commit('meta', params)
 
-    await this.$axios.$get('/products', { params }).then(
+    await this.$axios.$get('/transactions', { params }).then(
       ({ data, meta }) => {
         commit('all', data)
         commit('meta', { total: meta.total })
@@ -25,7 +25,7 @@ const actions = {
     )
   },
   async find ({ commit }, id) {
-    await this.$axios.$get(`/products/${id}`).then(
+    await this.$axios.$get(`/transactions/${id}`).then(
       ({ data }) => commit('find', data)
     )
   },
@@ -35,9 +35,10 @@ const actions = {
     form.append('farm_id', payload.farm_id)
     form.append('name', payload.name)
     form.append('amount', payload.amount)
+    form.append('unit', payload.unit)
     form.append('unit_price', payload.unit_price)
-    form.append('harvest_date', payload.harvest_date)
-    form.append('price', payload.price)
+    form.append('date', payload.date)
+    form.append('total', payload.total)
     form.append('description', payload.description)
     form.append('file_1', payload.file1)
     form.append('file_2', payload.file2)
@@ -48,13 +49,13 @@ const actions = {
       headers: { 'Content-Type': 'multipart/form-data' }
     }
 
-    await this.$axios.$post('/products', form, config)
+    await this.$axios.$post('/transactions', form, config)
   },
   async update (ctx, payload) {
-    await this.$axios.$patch(`/products/${payload.id}`, payload)
+    await this.$axios.$patch(`/transactions/${payload.id}`, payload)
   },
   async delete (ctx, id) {
-    await this.$axios.$delete(`/products/${id}`)
+    await this.$axios.$delete(`/transactions/${id}`)
   }
 }
 

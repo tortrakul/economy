@@ -40,6 +40,14 @@
                 </div>
 
                 <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">หน่วย</label>
+                    <div class="col-lg-10">
+                        <input v-model="unit" type="text" class="form-control" :class="{ 'is-invalid': $v.unit.$error }" />
+                        <div v-if="!$v.unit.required" class="invalid-feedback">กรุณากรอก หน่วย</div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     <label class="col-lg-2 col-form-label">ราคาต่อหน่วย</label>
                     <div class="col-lg-10">
                         <input v-model="unit_price" type="text" class="form-control" :class="{ 'is-invalid': $v.unit_price.$error }" />
@@ -50,16 +58,16 @@
                 <div class="form-group row">
                     <label class="col-lg-2 col-form-label">วันที่เก็บเกี่ยว</label>
                     <div class="col-lg-10">
-                        <b-form-datepicker v-model="harvest_date" :class="{ 'is-invalid': $v.harvest_date.$error }" />
-                        <div v-if="!$v.harvest_date.required" class="invalid-feedback">กรุณากรอก วันที่เก็บเกี่ยว</div>
+                        <b-form-datepicker v-model="date" :class="{ 'is-invalid': $v.date.$error }" />
+                        <div v-if="!$v.date.required" class="invalid-feedback">กรุณากรอก วันที่เก็บเกี่ยว</div>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-lg-2 col-form-label">ราคา</label>
                     <div class="col-lg-10">
-                        <input v-model="price" type="text" class="form-control" :class="{ 'is-invalid': $v.price.$error }" />
-                        <div v-if="!$v.price.required" class="invalid-feedback">กรุณากรอก ราคา</div>
+                        <input v-model="total" type="text" class="form-control" :class="{ 'is-invalid': $v.total.$error }" />
+                        <div v-if="!$v.total.required" class="invalid-feedback">กรุณากรอก ราคา</div>
                     </div>
                 </div>
 
@@ -101,9 +109,10 @@ export default {
         farm_id: { required },
         name: { required },
         amount: { required },
+        unit: { required },
         unit_price: { required },
-        harvest_date: { required },
-        price: { required },
+        date: { required },
+        total: { required },
         description: { required },
         file1: { required },
         file2: {},
@@ -114,9 +123,10 @@ export default {
         farm_id: null,
         name: '',
         amount: '',
+        unit: '',
         unit_price: '',
-        harvest_date: null,
-        price: '',
+        date: null,
+        total: '',
         description: null,
         file1: null,
         file2: null,
