@@ -13,7 +13,7 @@
         </nuxt-link>
 
         <nuxt-link to="/products" class="d-flex align-items-center py-2">
-            <Stock class="mr-3" style="width: 18px; height: 18px;" /> รายการสินค้า
+            <Stock class="mr-3" style="width: 18px; height: 18px;" /> รายการผลผลิต
         </nuxt-link>
 
         <nuxt-link to="/expenses" class="d-flex align-items-center py-2">

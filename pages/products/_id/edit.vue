@@ -24,10 +24,10 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-lg-2 col-form-label">ชื่อสินค้า</label>
+                    <label class="col-lg-2 col-form-label">ชื่อผลผลิต</label>
                     <div class="col-lg-10">
                         <input v-model="name" type="text" class="form-control" :class="{ 'is-invalid': $v.name.$error }" />
-                        <div v-if="!$v.name.required" class="invalid-feedback">กรุณากรอก ชื่อสินค้า</div>
+                        <div v-if="!$v.name.required" class="invalid-feedback">กรุณากรอก ชื่อผลผลิต</div>
                     </div>
                 </div>
 

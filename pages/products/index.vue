@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="card card-body mb-3">
-            <h5 class="card-title">รายชื่อสินค้า</h5>
+            <h5 class="card-title">รายการผลผลิต</h5>
 
             <div class="d-flex mb-5">
                 <router-link to="/products/create" class="btn btn-gradient-primary pr-3 text-nowrap">
-                    <i class="material-icons">add</i> เพิ่มสินค้า
+                    <i class="material-icons">add</i> เพิ่มผลผลิต
                 </router-link>
 
                 <div class="input-group mx-3">
@@ -23,11 +23,15 @@
 
             <div class="row">
                 <div class="col-md-6 col-lg-3" v-for="(product,index) in list" :key="index">
-                    <Card
+                    <TagCard
                         class="mb-3"
                         :cover="product.cover"
                         :title="product.name"
-                        :subtitle="`${product.amount} ${product.unit} / ${product.total} บาท <br /> ${product.date}`" />
+                        :subtitle="`${product.amount} ${product.unit} / ${product.total} บาท`"
+                        :profile="product.farm_avatar"
+                        :name="product.farm"
+                        tag-class="primary"
+                        tag-label="Lorem ipsum" />
 
                     <nuxt-link :to="`/products/${product.id}`" class="stretched-link" />
                 </div>
@@ -43,11 +47,11 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import Card from '~/components/Card';
+import TagCard from '~/components/TagCard';
 
 export default {
   components: {
-    Card
+    TagCard
   },
   methods: {
     ...mapActions({

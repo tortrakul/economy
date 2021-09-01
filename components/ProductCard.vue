@@ -11,7 +11,7 @@
 
             <div class="d-flex align-items-center ml-auto">
                 <router-link :to="`/products/${product.id}/edit`" class="btn btn-sm btn-default">
-                    <Edit /> <span class="d-none d-lg-inline ml-1">แก้ไขรายละเอียดสินค้า</span>
+                    <Edit /> <span class="d-none d-lg-inline ml-1">แก้ไขรายละเอียด</span>
                 </router-link>
 
                 <button v-b-modal.modal-confirm-delete class="btn btn-sm btn-default text-danger">
