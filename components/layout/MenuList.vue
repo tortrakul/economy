@@ -33,17 +33,17 @@ export default {
                 icon: 'Home',
                 path: '/'
             }, {
-                name: 'รายการสินค้า',
-                icon: 'Stock',
-                path: '/products'
+                name: 'รายชื่อสวน',
+                icon: 'Farm',
+                path: '/farms'
             }, {
                 name: 'รายชื่อเกษตรกร',
                 icon: 'Farmer',
                 path: '/farmers'
             }, {
-                name: 'รายชื่อสวน',
-                icon: 'Farm',
-                path: '/farms'
+                name: 'รายการสินค้า',
+                icon: 'Stock',
+                path: '/products'
             }, {
                 name: 'รายจ่าย',
                 icon: 'List',

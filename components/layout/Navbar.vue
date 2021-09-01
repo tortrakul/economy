@@ -12,10 +12,11 @@
 
             <b-collapse id="nav-collapse" is-nav style="display: none !important;">
                 <b-navbar-nav>
-                    <b-nav-item href="#">หน้าหลัก</b-nav-item>
-                    <b-nav-item href="#">รายการสินค้า</b-nav-item>
-                    <b-nav-item href="#">รายชื่อเกษตรกร</b-nav-item>
-                    <b-nav-item href="#">รายชื่อสวน</b-nav-item>
+                    <b-nav-item to="/">หน้าหลัก</b-nav-item>
+                    <b-nav-item to="/farms">รายชื่อสวน</b-nav-item>
+                    <b-nav-item to="/farmers">รายชื่อเกษตรกร</b-nav-item>
+                    <b-nav-item to="/products">รายการสินค้า</b-nav-item>
+                    <b-nav-item to="/profile">แก้ไขโปรไฟล์</b-nav-item>
                 </b-navbar-nav>
             </b-collapse>
         </div>
