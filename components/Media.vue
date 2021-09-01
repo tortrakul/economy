@@ -1,5 +1,5 @@
 <template>
-    <div class="position-relative d-flex mb-2 bg-light rounded embed-responsive embed-responsive-1by1">
+    <div class="position-relative d-flex bg-light rounded embed-responsive embed-responsive-1by1">
         <template v-if="media">
             <img :src="src" class="rounded img-fluid w-100" />
 
