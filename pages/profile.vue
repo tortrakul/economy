@@ -1,5 +1,23 @@
 <template>
     <div>
+        <div class="d-lg-none row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card card-body mb-3">
+                    <h5 class="card-title">รูปโปรไฟล์</h5>
+
+                    <Media
+                        :key="$auth.user.avatar_id"
+                        :src="$auth.user.avatar"
+                        :id="$auth.user.id"
+                        model="user"
+                        index="0"
+                        :media-id="$auth.user.avatar_id"
+                        :callback="() => $auth.fetchUser()"
+                        class="mx-auto mb-2 w-50" />
+                </div>
+            </div>
+        </div>
+
         <form @submit.prevent="onSubmit">
             <div class="card card-body mb-3">
                 <h5 class="card-title">ข้อมูลส่วนตัว</h5>
