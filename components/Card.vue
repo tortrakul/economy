@@ -1,7 +1,7 @@
 <template>
     <div class="card card-body p-2 shadow-sm">
 
-        <img :src="cover" class="rounded">
+        <img :src="src" class="rounded">
 
         <div class="p-2">
             <p class="d-flex align-items-center mb-2">{{ title }}</p>
@@ -13,6 +13,11 @@
 
 <script>
 export default {
-    props: ['cover', 'title', 'subtitle']
+    props: ['cover', 'title', 'subtitle'],
+    computed: {
+        src () {
+            return this.cover ?? '/assets/product.png'
+        }
+    }
 }
 </script>

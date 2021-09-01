@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ExpenseCard name="ปุ๋ยเคมี" class="mb-3" />
+        <ExpenseCard v-if="row" class="mb-3" />
 
         <div class="card card-body">
             <h5 class="card-title">รายละเอียดเพิ่มเติม</h5>
@@ -20,11 +20,25 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 import ExpenseCard from '~/components/ExpenseCard';
 
 export default {
     components: {
         ExpenseCard
+    },
+    methods: {
+        ...mapActions({
+            find: 'transaction/find'
+        })
+    },
+    computed: {
+        ...mapState('transaction', [
+            'row'
+        ])
+    },
+    mounted () {
+        this.find(this.$route.params.id)
     }
 }
 </script>

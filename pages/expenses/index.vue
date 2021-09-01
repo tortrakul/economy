@@ -4,9 +4,9 @@
             <h5 class="card-title">รายจ่าย</h5>
 
             <div class="d-flex mb-5">
-                <button class="btn btn-gradient-primary pr-3 text-nowrap">
+                <router-link to="/expenses/create" class="btn btn-gradient-primary pr-3 text-nowrap">
                     <i class="material-icons">add</i> เพิ่มรายจ่าย
-                </button>
+                </router-link>
 
                 <div class="input-group mx-3">
                     <div class="input-group-prepend">
@@ -21,55 +21,46 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6 col-lg-3" v-for="(tag,index) in tags" :key="index">
+                <div class="col-md-6 col-lg-3" v-for="(expense,index) in list" :key="index">
                     <Card
                         class="mb-3"
-                        cover="assets/Picture.png"
-                        title="ปุ๋ยเคมี"
-                        subtitle="10 กระสอบ / 8,000 บาท <br /> 13 เมษายน 2564" />
+                        :cover="expense.cover"
+                        :title="expense.name"
+                        :subtitle="`${expense.amount} ${expense.unit} / ${expense.total} บาท <br /> ${expense.date}`" />
 
-                    <nuxt-link to="/expenses/detail" class="stretched-link" />
+                    <nuxt-link :to="`/expenses/${expense.id}`" class="stretched-link" />
                 </div>
             </div>
         </div>
-
-        <nav class="d-flex">
-            <ul class="pagination ml-auto">
-                <li class="page-item">
-                    <a class="page-link text-secondary" href="#">
-                        <span class="material-icons small">chevron_left</span>
-                    </a>
-                </li>
-
-                <li class="page-item">
-                    <a class="page-link text-secondary" href="#">1</a>
-                </li>
-
-                <li class="page-item">
-                    <a class="page-link text-secondary" href="#">2</a>
-                </li>
-
-                <li class="page-item">
-                    <a class="page-link text-secondary" href="#">
-                        <span class="material-icons small">chevron_right</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <b-pagination
+            value="1"
+            :total-rows="meta.total"
+            :per-page="meta.per_page"
+            @change="page => all({ page })" />
     </div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 import Card from '~/components/Card';
 
 export default {
   components: {
     Card
   },
-  data() {
-    return {
-      tags: [1, 2, 3, 4, 5, 6, 7, 8]
-    }
+  methods: {
+    ...mapActions({
+        all: 'transaction/all'
+    })
+  },
+  computed: {
+    ...mapState('transaction', [
+        'list',
+        'meta'
+    ])
+  },
+  mounted () {
+    this.all()
   }
 }
 </script>
