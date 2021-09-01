@@ -23,6 +23,9 @@ export const actions = {
     return await this.$axios.$post('/register', form, config).then(
       response => response
     )
+  },
+  async update (ctx, payload) {
+    await this.$axios.$patch('me', payload)
   }
 
 }

@@ -15,9 +15,9 @@
         </div>
 
         <div class="card-footer bg-white">
-            <a href="#" class="d-flex justify-content-center align-items-center">
+            <router-link to="/profile" class="d-flex justify-content-center align-items-center">
                 <Edit class="mr-1" /> แก้ไข
-            </a>
+            </router-link>
         </div>
     </div>
 </template>
