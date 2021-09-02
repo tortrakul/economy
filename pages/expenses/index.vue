@@ -12,7 +12,8 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="material-icons">search</i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="ค้นหา" />
+
+                    <input @change="e => all({ search: e.target.value })" type="text" class="form-control" placeholder="ค้นหา" />
                 </div>
 
                 <button class="btn btn-default">
