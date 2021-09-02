@@ -1,4 +1,8 @@
 export default {
+  env: {
+    googleMapsApiKey: process.env.NUXT_ENV_GOOGLE_MAPS_API_KEY
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - lamyai-farm',
