@@ -116,7 +116,7 @@
 
                         <tr class="d-flex flex-column d-lg-table-row">
                             <td class="border-0 text-nowrap font-weight-bold">ราคา</td>
-                            <td class="border-0">{{ transaction.total }} บาท</td>
+                            <td class="border-0">{{ Math.abs(transaction.total) }} บาท</td>
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">

@@ -153,7 +153,7 @@ export default {
                 this.unit = this.row.unit
                 this.unit_price = this.row.unit_price
                 this.date = this.row.date
-                this.total = this.row.total
+                this.total = Math.abs(this.row.total)
                 this.description = this.row.description
             }
         )

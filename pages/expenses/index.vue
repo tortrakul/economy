@@ -26,7 +26,7 @@
                         class="mb-3"
                         :cover="expense.cover"
                         :title="expense.name"
-                        :subtitle="`${expense.amount} ${expense.unit} / ${expense.total} บาท <br /> ${expense.date}`" />
+                        :subtitle="`${expense.amount} ${expense.unit} / ${Math.abs(expense.total)} บาท <br /> ${expense.date}`" />
 
                     <nuxt-link :to="`/expenses/${expense.id}`" class="stretched-link" />
                 </div>
