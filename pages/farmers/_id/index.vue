@@ -5,7 +5,7 @@
                 <div class="card mb-3">
                     <div class="card-header d-flex flex-column flex-lg-row pb-0 bg-white border-bottom-0">
                         <div class="d-flex align-items-center">
-                            <router-link to="/farmers" class="btn btn-sm btn-default pl-0">
+                            <router-link v-if="$auth.hasScope('admin')" to="/farmers" class="btn btn-sm btn-default pl-0">
                                 <i class="material-icons">chevron_left</i>
                             </router-link>
 

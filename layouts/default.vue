@@ -5,7 +5,7 @@
         <div class="container pt-5">
             <div class="row">
                 <div class="d-none d-lg-block col-3">
-                    <Profile class="mb-3" />
+                    <Profile v-if="$auth.hasScope('admin')" class="mb-3" />
                     <MenuList />
                 </div>
 

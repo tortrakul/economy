@@ -4,7 +4,7 @@
             <Home class="mr-3" style="width: 18px; height: 18px;" /> หน้าแรก
         </nuxt-link>
 
-        <nuxt-link :to="`/farmers/${$auth.user.id}`" class="d-flex align-items-center py-2">
+        <nuxt-link v-if="!$auth.hasScope('admin')" :to="`/farmers/${$auth.user.id}`" class="d-flex align-items-center py-2">
             <Farmer class="mr-3" style="width: 18px; height: 18px;" /> ข้อมูลเกษตรกร
         </nuxt-link>
 
@@ -12,15 +12,15 @@
             <Farm class="mr-3" style="width: 18px; height: 18px;" /> รายชื่อสวน
         </nuxt-link>
 
-        <nuxt-link to="/farmers" class="d-flex align-items-center py-2">
+        <nuxt-link v-if="$auth.hasScope('admin')" to="/farmers" class="d-flex align-items-center py-2">
             <Farmer class="mr-3" style="width: 18px; height: 18px;" /> รายชื่อเกษตรกร
         </nuxt-link>
 
-        <nuxt-link to="/products" class="d-flex align-items-center py-2">
+        <nuxt-link v-if="!$auth.hasScope('admin')" to="/products" class="d-flex align-items-center py-2">
             <Stock class="mr-3" style="width: 18px; height: 18px;" /> รายการผลผลิต
         </nuxt-link>
 
-        <nuxt-link to="/expenses" class="d-flex align-items-center py-2">
+        <nuxt-link v-if="!$auth.hasScope('admin')" to="/expenses" class="d-flex align-items-center py-2">
             <List class="mr-3" style="width: 18px; height: 18px;" /> รายจ่าย
         </nuxt-link>
     </div>
