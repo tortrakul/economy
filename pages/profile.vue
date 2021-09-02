@@ -55,6 +55,14 @@
                 </div>
 
                 <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">พร้อมเพย์</label>
+                    <div class="col-lg-10">
+                        <input v-model="promptpay" type="text" class="form-control" :class="{ 'is-invalid': $v.promptpay.$error }" />
+                        <div v-if="!$v.promptpay.required" class="invalid-feedback">กรุณากรอก พร้อมเพย์</div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     <label class="col-lg-2 col-form-label">ไลน์ไอดี</label>
                     <div class="col-lg-10">
                         <input v-model="line" type="text" class="form-control" :class="{ 'is-invalid': $v.line.$error }" />
@@ -149,6 +157,7 @@ export default {
         birth_date: { required },
         citizen_id: { required },
         tel: { required },
+        promptpay: { required },
         line: { required },
         address: { required },
         sub_district_id: { required },
@@ -164,6 +173,7 @@ export default {
         birth_date: '',
         citizen_id: '',
         tel: '',
+        promptpay: '',
         line: '',
         address: '',
         sub_district_id: null,
@@ -236,6 +246,7 @@ export default {
                 this.birth_date = this.$auth.user.birth_date
                 this.citizen_id = this.$auth.user.citizen_id
                 this.tel = this.$auth.user.tel
+                this.promptpay = this.$auth.user.promptpay
                 this.line = this.$auth.user.line
                 this.address = this.$auth.user.address
                 this.sub_district_id = this.$auth.user.sub_district_id
