@@ -111,7 +111,7 @@
 
                         <tr class="d-flex flex-column d-lg-table-row">
                             <td class="border-0 text-nowrap font-weight-bold">วันที่</td>
-                            <td class="border-0">{{ product.date }}</td>
+                            <td class="border-0">{{ product.date | date }}</td>
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">

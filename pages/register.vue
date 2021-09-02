@@ -28,7 +28,7 @@
                 <div class="form-group row">
                     <label class="col-lg-2 col-form-label">วัน เดือน ปีเกิด</label>
                     <div class="col-lg-10">
-                        <b-form-datepicker v-model="birthDay" :class="{ 'is-invalid': $v.birthDay.$error }" />
+                        <b-form-datepicker v-model="birthDay" locale="th" :class="{ 'is-invalid': $v.birthDay.$error }" />
                         <div v-if="!$v.birthDay.required" class="invalid-feedback">กรุณากรอก วัน เดือน ปีเกิด</div>
                     </div>
                 </div>

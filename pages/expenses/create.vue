@@ -58,7 +58,7 @@
                 <div class="form-group row">
                     <label class="col-lg-2 col-form-label">วันที่</label>
                     <div class="col-lg-10">
-                        <b-form-datepicker v-model="date" :class="{ 'is-invalid': $v.date.$error }" />
+                        <b-form-datepicker v-model="date" locale="th" :class="{ 'is-invalid': $v.date.$error }" />
                         <div v-if="!$v.date.required" class="invalid-feedback">กรุณากรอก วันที่</div>
                     </div>
                 </div>

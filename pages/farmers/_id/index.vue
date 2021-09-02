@@ -77,7 +77,7 @@
 
                             <tr class="d-flex flex-column d-lg-table-row">
                                 <td class="border-0 text-nowrap font-weight-bold">วันเกิด</td>
-                                <td class="border-0">{{ farmer.birth_date }}</td>
+                                <td class="border-0">{{ farmer.birth_date | date }}</td>
                             </tr>
 
                             <tr class="d-flex flex-column d-lg-table-row">

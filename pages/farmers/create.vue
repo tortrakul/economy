@@ -78,7 +78,7 @@
                 <div class="form-group row">
                     <label class="col-lg-2 col-form-label">วันเกิด</label>
                     <div class="col-lg-10">
-                        <b-form-datepicker v-model="birth_date" :class="{ 'is-invalid': $v.birth_date.$error }" />
+                        <b-form-datepicker v-model="birth_date" locale="th" :class="{ 'is-invalid': $v.birth_date.$error }" />
                         <div v-if="!$v.birth_date.required" class="invalid-feedback">กรุณากรอก วันเกิด</div>
                     </div>
                 </div>
