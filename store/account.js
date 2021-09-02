@@ -7,6 +7,7 @@ export const actions = {
     form.append('birth_date', payload.birth_date)
     form.append('citizen_id', payload.citizen_id)
     form.append('tel', payload.tel)
+    form.append('promptpay', payload.promptpay)
     form.append('line', payload.line)
     form.append('address', payload.address)
     form.append('sub_district_id', payload.sub_district_id)
