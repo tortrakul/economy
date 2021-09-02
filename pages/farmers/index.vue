@@ -31,6 +31,11 @@
                 </div>
             </div>
         </div>
+        <b-pagination
+            value="1"
+            :total-rows="meta.total"
+            :per-page="meta.per_page"
+            @change="page => all({ page })" />
     </div>
 </template>
 
