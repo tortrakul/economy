@@ -6,7 +6,7 @@
         </div>
 
         <div class="d-flex justify-content-center align-items-center w-100 overflow-hidden rounded" style="height: 150px; max-height: 150px;">
-            <img :src="cover" class="img-fluid rounded">
+            <img :src="src" class="img-fluid rounded" />
         </div>
 
         <div class="p-2">
@@ -14,7 +14,7 @@
             <small class="text-muted">{{ subtitle }}</small>
 
             <div class="mt-2">
-                <img :src="profile" width="32" height="32" class="mr-1 rounded-circle" />
+                <img :src="avatar" width="32" height="32" class="mr-1 rounded-circle" />
                 <small>{{ name }}</small>
             </div>
         </div>
@@ -23,6 +23,14 @@
 
 <script>
 export default {
-    props: ['cover', 'title', 'subtitle', 'profile', 'name', 'tag-class', 'tag-label']
+    props: ['cover', 'title', 'subtitle', 'profile', 'name', 'tag-class', 'tag-label'],
+    computed: {
+        src () {
+            return this.cover ?? '/assets/product.png'
+        },
+        avatar () {
+            return this.profile ?? '/assets/profile.jpg'
+        }
+    }
 }
 </script>
