@@ -32,6 +32,7 @@ const actions = {
   async create (ctx, payload) {
 
     let form = new FormData
+    form.append('owner_id', payload.owner_id)
     form.append('name', payload.name)
     form.append('tel', payload.tel)
     form.append('address', payload.address)

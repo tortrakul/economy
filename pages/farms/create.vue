@@ -15,7 +15,13 @@
                 <div class="form-group row">
                     <label class="col-lg-2 col-form-label">ชื่อเจ้าของ</label>
                     <div class="col-lg-10">
-                        <input :value="$auth.user.name" type="text" class="form-control-plaintext" disabled readonly />
+                        <template v-if="!$auth.hasScope('admin')">
+                            <input :value="$auth.user.name" type="text" class="form-control-plaintext" disabled readonly />
+                            <input type="hidden" v-model="owner_id" />
+                        </template>
+                        <select v-else v-model="owner_id" class="form-control">
+                            <option v-for="user in users" :value="user.id" :key="user.id">{{ user.name }}</option>
+                        </select>
                     </div>
                 </div>
 
@@ -129,6 +135,7 @@ import { required } from 'vuelidate/lib/validators'
 
 export default {
     validations: {
+        owner_id: { required },
         name: { required },
         tel: { required },
         address: { required },
@@ -143,6 +150,7 @@ export default {
         file4: {}
     },
     data: () => ({
+        owner_id: null,
         name: '',
         tel: '',
         address: '',
@@ -163,6 +171,9 @@ export default {
             provinces: 'provinces',
             districts: 'districts',
             subDistricts: 'subDistricts'
+        }),
+        ...mapState('user', {
+            users: 'list'
         })
     },
     methods: {
@@ -173,6 +184,9 @@ export default {
             fetchProvinces: 'provinces',
             fetchDistricts: 'districts',
             fetchSubDistricts: 'subDistricts',
+        }),
+        ...mapActions({
+            fetchUser: 'user/all'
         }),
         handleFileUpload (name) {
             this[name] = this.$refs[name][0].files[0]
@@ -185,6 +199,7 @@ export default {
             }
 
             this.create({
+                owner_id: this.owner_id,
                 name: this.name,
                 tel: this.tel,
                 address: this.address,
@@ -210,6 +225,12 @@ export default {
     },
     mounted () {
         this.fetchProvinces()
+
+        if (this.$auth.hasScope('admin')) {
+            this.fetchUser()
+        } else {
+            this.owner_id = this.$auth.user.id
+        }
     }
 }
 </script>
