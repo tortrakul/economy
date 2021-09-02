@@ -101,12 +101,12 @@
 
                         <tr class="d-flex flex-column d-lg-table-row">
                             <td class="border-0 text-nowrap font-weight-bold">จำนวน</td>
-                            <td class="border-0">{{ transaction.amount }} {{ transaction.unit }}</td>
+                            <td class="border-0">{{ transaction.amount | number }} {{ transaction.unit }}</td>
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">
                             <td class="border-0 text-nowrap font-weight-bold">ราคาต่อหน่วย</td>
-                            <td class="border-0">{{ transaction.unit_price }} บาท</td>
+                            <td class="border-0">{{ transaction.unit_price | number }} บาท</td>
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">
@@ -116,7 +116,7 @@
 
                         <tr class="d-flex flex-column d-lg-table-row">
                             <td class="border-0 text-nowrap font-weight-bold">ราคา</td>
-                            <td class="border-0">{{ Math.abs(transaction.total) }} บาท</td>
+                            <td class="border-0">{{ Math.abs(transaction.total) | number }} บาท</td>
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">

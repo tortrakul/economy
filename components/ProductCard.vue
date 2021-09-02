@@ -101,12 +101,12 @@
 
                         <tr class="d-flex flex-column d-lg-table-row">
                             <td class="border-0 text-nowrap font-weight-bold">จำนวน</td>
-                            <td class="border-0">{{ product.amount }} {{ product.unit }}</td>
+                            <td class="border-0">{{ product.amount | number }} {{ product.unit }}</td>
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">
                             <td class="border-0 text-nowrap font-weight-bold">ราคาต่อหน่วย</td>
-                            <td class="border-0">{{ product.unit_price }} บาท</td>
+                            <td class="border-0">{{ product.unit_price | number }} บาท</td>
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">
@@ -116,7 +116,7 @@
 
                         <tr class="d-flex flex-column d-lg-table-row">
                             <td class="border-0 text-nowrap font-weight-bold">ราคา</td>
-                            <td class="border-0">{{ product.total }} บาท</td>
+                            <td class="border-0">{{ product.total | number }} บาท</td>
                         </tr>
 
                         <tr class="d-flex flex-column d-lg-table-row">
