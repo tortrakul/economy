@@ -15,7 +15,14 @@
                 <div class="form-group row">
                     <label class="col-lg-2 col-form-label">ชื่อเจ้าของ</label>
                     <div class="col-lg-10">
-                        <input :value="$auth.user.name" type="text" class="form-control-plaintext" disabled readonly />
+                        <template v-if="!$auth.hasScope('admin')">
+                            <input :value="$auth.user.name" type="text" class="form-control-plaintext" disabled readonly />
+                            <input type="hidden" v-model="owner_id" />
+                        </template>
+                        <select v-else v-model="owner_id" class="form-control" :class="{ 'is-invalid': $v.owner_id.$error }">
+                            <option v-for="user in users" :value="user.id" :key="user.id">{{ user.name }}</option>
+                        </select>
+                        <div v-if="!$v.owner_id.required" class="invalid-feedback">กรุณากรอก ชื่อเจ้าของ</div>
                     </div>
                 </div>
 
@@ -118,6 +125,7 @@ import { required } from 'vuelidate/lib/validators'
 
 export default {
     validations: {
+        owner_id: { required },
         name: { required },
         tel: { required },
         address: { required },
@@ -128,6 +136,7 @@ export default {
         description: { required }
     },
     data: () => ({
+        owner_id: null,
         name: '',
         tel: '',
         address: '',
@@ -148,7 +157,10 @@ export default {
         }),
         ...mapState('farm', [
             'row'
-        ])
+        ]),
+        ...mapState('user', {
+            users: 'list'
+        })
     },
     methods: {
         ...mapActions({
@@ -160,6 +172,9 @@ export default {
             fetchDistricts: 'districts',
             fetchSubDistricts: 'subDistricts',
         }),
+        ...mapActions({
+            fetchUsers: 'user/all'
+        }),
         async onSubmit () {
             this.$v.$touch()
 
@@ -169,6 +184,7 @@ export default {
 
             this.update({
                 id: this.row.id,
+                owner_id: this.owner_id,
                 name: this.name,
                 tel: this.tel,
                 address: this.address,
@@ -188,9 +204,11 @@ export default {
     },
     mounted () {
         this.fetchProvinces()
+        this.fetchUsers()
 
         this.find(this.$route.params.id).then(
             () => {
+                this.owner_id = this.row.owner_id
                 this.name = this.row.name
                 this.tel = this.row.tel
                 this.address = this.row.address

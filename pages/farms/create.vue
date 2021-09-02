@@ -19,9 +19,10 @@
                             <input :value="$auth.user.name" type="text" class="form-control-plaintext" disabled readonly />
                             <input type="hidden" v-model="owner_id" />
                         </template>
-                        <select v-else v-model="owner_id" class="form-control">
+                        <select v-else v-model="owner_id" class="form-control" :class="{ 'is-invalid': $v.owner_id.$error }">
                             <option v-for="user in users" :value="user.id" :key="user.id">{{ user.name }}</option>
                         </select>
+                        <div v-if="!$v.owner_id.required" class="invalid-feedback">กรุณากรอก ชื่อเจ้าของ</div>
                     </div>
                 </div>
 
