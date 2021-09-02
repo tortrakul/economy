@@ -4,6 +4,10 @@
             <Home class="mr-3" style="width: 18px; height: 18px;" /> หน้าแรก
         </nuxt-link>
 
+        <nuxt-link :to="`/farmers/${$auth.user.id}`" class="d-flex align-items-center py-2">
+            <Farmer class="mr-3" style="width: 18px; height: 18px;" /> ข้อมูลเกษตรกร
+        </nuxt-link>
+
         <nuxt-link to="/farms" class="d-flex align-items-center py-2">
             <Farm class="mr-3" style="width: 18px; height: 18px;" /> รายชื่อสวน
         </nuxt-link>

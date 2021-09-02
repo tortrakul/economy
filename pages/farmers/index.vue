@@ -44,11 +44,11 @@ export default {
   },
   methods: {
     ...mapActions({
-        all: 'farmer/all'
+        all: 'user/all'
     })
   },
   computed: {
-    ...mapState('farmer', [
+    ...mapState('user', [
         'list',
         'meta'
     ])

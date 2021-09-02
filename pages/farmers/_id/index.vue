@@ -17,13 +17,13 @@
                         <!-- file 1 -->
                         <div class="position-relative d-flex mb-2 bg-light rounded embed-responsive embed-responsive-1by1">
                             <img :src="cover" class="rounded img-fluid w-100" />
-                            <a v-if="farmer.cover" @click.prevent="deletingMedia(farmer.cover.id)" href="#" class="position-absolute" style="top: 6px; right: 6px;">
+                            <a v-if="farmer.avatar_id" @click.prevent="deletingMedia(farmer.avatar_id)" href="#" class="position-absolute" style="top: 6px; right: 6px;">
                                 <span class="material-icons-outlined">close</span>
                             </a>
                         </div>
 
-                        <input @change="e => uploadingMedia(e, 0)" type="file" ref="cover" class="d-none" />
-                        <a v-if="!farmer.cover" @click.prevent="$refs.cover.click()" href="#" class="btn btn-sm btn-block">
+                        <input @change="e => uploadingMedia(e, 0)" type="file" ref="avatar" class="d-none" />
+                        <a v-if="!farmer.avatar_id" @click.prevent="$refs.avatar.click()" href="#" class="btn btn-sm btn-block">
                             <i class="material-icons">add</i> เพิ่มรูปโปรไฟล์
                         </a>
                     </div>
@@ -38,11 +38,15 @@
                         </div>
 
                         <div class="d-flex align-items-center ml-auto">
+                            <router-link to="/farms/create" class="btn btn-sm btn-default">
+                                <Edit /> <span class="d-none d-lg-inline ml-1">เพิ่มสวน</span>
+                            </router-link>
+
                             <router-link :to="`/farmers/${farmer.id}/edit`" class="btn btn-sm btn-default">
                                 <Edit /> <span class="d-none d-lg-inline ml-1">แก้ไขรายละเอียด</span>
                             </router-link>
 
-                            <button v-b-modal.modal-confirm-delete class="btn btn-sm btn-default text-danger">
+                            <button v-if="$auth.hasScope('admin')" v-b-modal.modal-confirm-delete class="btn btn-sm btn-default text-danger">
                                 <Delete /> <span class="d-none d-lg-inline ml-1">ลบรายชื่อ</span>
                             </button>
                         </div>
@@ -105,24 +109,15 @@
             <div class="card-header d-flex align-items-center bg-white">
                 <h5 class="card-title mb-0">รายชื่อสวน</h5>
                 <small class="ml-auto text-muted">จำนวน {{ farmer.farms.length }} สวน</small>
-                <a v-b-modal.modal-attach-farms href="#" class="ml-3 small">เพิ่มสวน</a>
             </div>
 
             <div class="card-body">
                 <b-badge v-for="farm in farmer.farms" :key="farm.id" variant="light" class="pl-2 pr-3 py-2 mr-3 mb-3 mb-lg-0 border">
-                    <a @click.prevent="detaching(farm.id)" v-if="farmer.farms.length > 1" class="material-icons-outlined mr-2" style="font-size: 12px;" href="#">close</a>
+                    <a @click.prevent="deletingFarm(farm.id)" class="material-icons-outlined mr-2" style="font-size: 12px;" href="#">close</a>
                     {{ farm.name }}
                 </b-badge>
             </div>
         </div>
-
-        <b-modal id="modal-attach-farms" title="เพิ่มสวน" @ok="attaching">
-            <select v-model="attachingId" class="form-control">
-                <option v-for="farm in farms" :value="farm.id" :key="`farm-optios-${farm.id}`">
-                    {{ farm.name }}
-                </option>
-            </select>
-        </b-modal>
 
         <b-modal id="modal-confirm-delete" title="ยืนยัน" @ok="deleting" modal-ok="ยืนยัน" modal-cancel="ยกเลิก">
             ยืนยันการลบข้อมูล
@@ -148,18 +143,19 @@ export default {
         ...mapState('farm', {
             farms: 'list'
         }),
-        ...mapState('farmer', {
+        ...mapState('user', {
             farmer: 'row'
         }),
         cover () {
-            return this.farmer.cover ? this.farmer.cover.url : '/assets/profile.jpg'
+            return this.farmer.avatar ?? '/assets/profile.jpg'
         }
     },
     methods: {
         ...mapActions('farm', {
-            fetchFarms: 'all'
+            fetchFarms: 'all',
+            deleteFarm: 'delete'
         }),
-        ...mapActions('farmer', {
+        ...mapActions('user', {
             find: 'find',
             delete: 'delete',
             attachFarm: 'attachFarm',
@@ -174,13 +170,18 @@ export default {
                 () => this.$router.push('/farmers')
             )
         },
+        deletingFarm (id) {
+            this.deleteFarm(id).then(
+                () => this.find(this.farmer.id)
+            )
+        },
         deletingMedia (id) {
             this.deleteMedia(id).then(() => this.find(this.farmer.id))
         },
         uploadingMedia (e, index) {
             this.uploadMedia({
                 id: this.farmer.id,
-                model: 'farmer',
+                model: 'user',
                 index: index,
                 media: e.target.files[0]
             }).then(() => this.find(this.farmer.id))

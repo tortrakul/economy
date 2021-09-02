@@ -13,17 +13,6 @@
         <div class="card-body">
             <form @submit.prevent="onSubmit">
                 <div class="form-group row">
-                    <label class="col-lg-2 col-form-label">สวน</label>
-                    <div class="col-lg-10">
-                        <select v-model="farm_id" class="form-control" :class="{ 'is-invalid': $v.farm_id.$error }">
-                            <option disabled :value="null">สวน</option>
-                            <option v-for="f in farms" :value="f.id" :key="f.id">{{ f.name }}</option>
-                        </select>
-                        <div v-if="!$v.farm_id.required" class="invalid-feedback">กรุณากรอก สวน</div>
-                    </div>
-                </div>
-
-                <div class="form-group row">
                     <label class="col-lg-2 col-form-label">ชื่อ</label>
                     <div class="col-lg-10">
                         <input v-model="name" type="text" class="form-control" :class="{ 'is-invalid': $v.name.$error }" />
@@ -153,7 +142,6 @@ import { required } from 'vuelidate/lib/validators'
 
 export default {
     validations: {
-        farm_id: { required },
         name: { required },
         citizen_id: { required },
         address: { required },
@@ -169,7 +157,6 @@ export default {
         file1: { required }
     },
     data: () => ({
-        farm_id: null,
         name: '',
         citizen_id: '',
         address: '',
@@ -196,7 +183,7 @@ export default {
     },
     methods: {
         ...mapActions({
-            create: 'farmer/create'
+            create: 'user/create'
         }),
         ...mapActions({
             fetchFarms: 'farm/all'
