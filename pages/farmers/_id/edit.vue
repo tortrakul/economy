@@ -167,14 +167,14 @@ export default {
             districts: 'districts',
             subDistricts: 'subDistricts'
         }),
-        ...mapState('farmer', [
+        ...mapState('user', [
             'row'
         ])
     },
     methods: {
         ...mapActions({
-            find: 'farmer/find',
-            update: 'farmer/update'
+            find: 'user/find',
+            update: 'user/update'
         }),
         ...mapActions({
             fetchFarms: 'farm/all'
