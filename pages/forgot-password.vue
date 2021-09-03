@@ -11,7 +11,7 @@
 
         <div class="form-group row">
             <div class="offset-lg-2 col-lg-10">
-                <button class="btn btn-gradient-primary px-4">ส่งลิงก์รีเซ็ตรหัสผ่าน</button>
+                <router-link to="/reset-password" class="btn btn-gradient-primary px-4">ส่งลิงก์รีเซ็ตรหัสผ่าน</router-link>
             </div>
         </div>
 
@@ -19,7 +19,7 @@
 
         <div class="row">
             <div class="offset-lg-2 col-lg-10 d-flex flex-column">
-                <a href="#" class="py-1">เข้าสู่ระบบ</a>
+                <router-link to="/login" class="py-1">เข้าสู่ระบบ</router-link>
             </div>
         </div>
     </div>
@@ -27,6 +27,7 @@
 
 <script>
 export default {
+    auth: 'guest',
     layout: 'auth'
 }
 </script>

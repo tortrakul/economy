@@ -26,7 +26,7 @@
 
         <div class="row">
             <div class="offset-lg-2 col-lg-10 d-flex flex-column">
-                <a href="#" class="py-1">เข้าสู่ระบบ</a>
+                <router-link to="/login" class="py-1">เข้าสู่ระบบ</router-link>
             </div>
         </div>
     </div>
@@ -34,6 +34,7 @@
 
 <script>
 export default {
+    auth: 'guest',
     layout: 'auth'
 }
 </script>

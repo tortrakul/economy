@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="d-flex justify-content-end">
-            <a class="btn btn-light">
+            <router-link to="/login" class="btn btn-light">
                 <span class="material-icons-outlined">power_settings_new</span>
                 ลงชื่อเข้าใช้
-            </a>
+            </router-link>
         </div>
 
         <hr />

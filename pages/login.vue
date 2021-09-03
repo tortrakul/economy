@@ -28,8 +28,8 @@
 
         <div class="row">
             <div class="offset-lg-2 col-lg-10 d-flex flex-column">
-                <a href="#" class="py-1">ลงทะเบียนเกษตรกร</a>
-                <a href="#" class="py-1">ลืมรหัสผ่าน</a>
+                <router-link to="/register" class="py-1">ลงทะเบียนเกษตรกร</router-link>
+                <router-link to="/forgot-password" class="py-1">ลืมรหัสผ่าน</router-link>
             </div>
         </div>
     </div>
