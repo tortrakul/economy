@@ -32,6 +32,8 @@ const actions = {
   async create (ctx, payload) {
 
     let form = new FormData
+    form.append('username', payload.username)
+    form.append('password', payload.password)
     form.append('name', payload.name)
     form.append('citizen_id', payload.citizen_id)
     form.append('address', payload.address)

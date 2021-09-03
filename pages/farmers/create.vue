@@ -13,6 +13,31 @@
         <div class="card-body">
             <form @submit.prevent="onSubmit">
                 <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">ชื่อผู้ใช้งาน</label>
+                    <div class="col-lg-10">
+                        <input v-model="username" type="text" class="form-control" :class="{ 'is-invalid': $v.username.$error }" />
+                        <div v-if="!$v.username.required" class="invalid-feedback">กรุณากรอก ชื่อผู้ใช้งาน</div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">รหัสผู้ใช้งาน</label>
+                    <div class="col-lg-10">
+                        <input v-model="password" type="password" class="form-control" :class="{ 'is-invalid': $v.password.$error }" />
+                        <div v-if="!$v.password.required" class="invalid-feedback">กรุณากรอก รหัสผู้ใช้งาน</div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">ยืนยันรหัสผู้ใช้งาน</label>
+                    <div class="col-lg-10">
+                        <input v-model="confirm_password" type="password" class="form-control" :class="{ 'is-invalid': $v.confirm_password.$error }" />
+                        <div v-if="!$v.confirm_password.required" class="invalid-feedback">กรุณากรอก รหัสผู้ใช้งาน</div>
+                        <div v-if="!$v.confirm_password.sameAs" class="invalid-feedback">รหัสผู้ใช้งานไม่ตรงกัน</div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     <label class="col-lg-2 col-form-label">ชื่อ</label>
                     <div class="col-lg-10">
                         <input v-model="name" type="text" class="form-control" :class="{ 'is-invalid': $v.name.$error }" />
@@ -138,10 +163,13 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import { required } from 'vuelidate/lib/validators'
+import { required, sameAs } from 'vuelidate/lib/validators'
 
 export default {
     validations: {
+        username: { required },
+        password: { required },
+        confirm_password: { sameAs: sameAs('password') },
         name: { required },
         citizen_id: { required },
         address: { required },
@@ -157,6 +185,9 @@ export default {
         file1: { required }
     },
     data: () => ({
+        username: '',
+        password: '',
+        confirm_password: '',
         name: '',
         citizen_id: '',
         address: '',
@@ -206,7 +237,24 @@ export default {
             this.create(this.$data).then(() => {
                 this.$router.push('/farmers')
             }).catch(error => {
-                console.log(error)
+
+                if (error.response.status == 422) {
+                    this.$bvToast.toast('อีเมลหรือชื่อผู้ใช้งานถูกใช้ไปแล้ว', {
+                        title: 'เกิดข้อผิดพลาด',
+                        toaster: 'b-toaster-bottom-center',
+                        variant: 'danger',
+                        noAutoHide: true
+                    })
+
+                    return
+                }
+
+                this.$bvToast.toast('ไม่สามารถทำการลงทะเบียนได้', {
+                    title: 'เกิดข้อผิดพลาด',
+                    toaster: 'b-toaster-bottom-center',
+                    variant: 'danger',
+                    noAutoHide: true
+                })
             })
         }
     },
