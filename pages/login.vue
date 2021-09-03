@@ -19,14 +19,6 @@
 
             <div class="form-group row">
                 <div class="offset-lg-2 col-lg-10">
-                    <label>
-                        <input type="checkbox" /> จำฉันไว้ในระบบ
-                    </label>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="offset-lg-2 col-lg-10">
                     <button class="btn btn-gradient-primary px-4" type="submit">เข้าสู่ระบบ</button>
                 </div>
             </div>
