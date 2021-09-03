@@ -50,7 +50,7 @@ export default {
   ],
 
   axios: {
-    baseURL: process.env.BASE_API
+    baseURL: process.env.NUXT_ENV_BASE_API
   },
 
   auth: {
