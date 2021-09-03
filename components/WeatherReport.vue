@@ -5,12 +5,12 @@
         <div class="d-flex flex-column flex-lg-row">
           <p class="mr-lg-4 mb-1 mb-lg-0 text-muted">
             <img src="/svg/calender.svg" width="16" height="16" class="mr-2" />
-            อังคาร 20 กรกฎาคม 2564
+            {{ date }}
           </p>
 
           <p class="mb-0 text-muted">
             <img src="/svg/point.svg" width="16" height="16" class="mr-2" />
-            อ.ฝาง จ.เชียงใหม่
+            อ.{{ $auth.user.district }} จ.{{ $auth.user.province }}
           </p>
         </div>
 
@@ -71,6 +71,18 @@
         </div>
     </div>
 </template>
+
+<script>
+import moment from 'moment'
+
+export default {
+    computed: {
+        date () {
+            return moment().add(543, 'years').lang('th').format('dddd Do MMMM YYYY')
+        }
+    }
+}
+</script>
 
 <style lang="scss" scoped>
     @media (max-width: 991.98px) {
