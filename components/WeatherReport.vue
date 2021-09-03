@@ -10,7 +10,7 @@
 
           <p class="mb-0 text-muted">
             <img src="/svg/point.svg" width="16" height="16" class="mr-2" />
-            อ.{{ $auth.user.district }} จ.{{ $auth.user.province }}
+            อ.ป่าซาง จ.ลำพูน
           </p>
         </div>
 
@@ -21,51 +21,35 @@
                 <small class="text-muted">อุณหภูมิ</small>
                 <div class="d-flex flex-row justify-content-center align-items-center mt-auto">
                     <img src="~/static/svg/weather/temperature.svg" class="mr-3" />
-                    30 °C
+                    {{ temp | number }} °C
                 </div>
             </div>
             <div class="d-flex flex-lg-column justify-content-between align-items-center flex-grow-1 py-2 text-center border-right">
                 <small class="text-muted">ความชื้นในอากาศ</small>
                 <div class="d-flex flex-row justify-content-center align-items-center mt-auto">
                     <img src="~/static/svg/weather/humidity.svg" class="mr-3" />
-                    70%
+                    {{ humidity }}%
                 </div>
             </div>
             <div class="d-flex flex-lg-column justify-content-between align-items-center flex-grow-1 py-2 text-center border-right">
                 <small class="text-muted">ความกดอากาศ</small>
                 <div class="d-flex flex-row justify-content-center align-items-center mt-auto">
                     <img src="~/static/svg/weather/air-pressure.svg" class="mr-3" />
-                    1 atm
+                    {{ pressure | decimal }} atm
                 </div>
             </div>
             <div class="d-flex flex-lg-column justify-content-between align-items-center flex-grow-1 py-2 text-center border-right">
-                <small class="text-muted">สภาพดิน</small>
-                <div class="d-flex flex-row justify-content-center align-items-center mt-auto">
-                    <img src="~/static/svg/weather/soil.svg" class="mr-3" />
-                    <div>
-                        <div class="d-flex justify-content-start">
-                            <img src="~/static/svg/weather/pH.svg" width="12" class="mr-2" />
-                            7
-                        </div>
-                        <div class="d-flex justify-content-start">
-                            <img src="~/static/svg/weather/humidity.svg" width="12" class="mr-2" />
-                            80%
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex flex-lg-column justify-content-between align-items-center flex-grow-1 py-2 text-center border-right">
-                <small class="text-muted">แสงแดด</small>
+                <small class="text-muted">สภาพอากาศ</small>
                 <div class="d-flex flex-row justify-content-center align-items-center mt-auto">
                     <img src="~/static/svg/weather/sunlight.svg" class="mr-3" />
-                    แดดอ่อน
+                    {{ description }}
                 </div>
             </div>
             <div class="d-flex flex-lg-column justify-content-between align-items-center flex-grow-1 py-2 text-center">
                 <small class="text-muted">ความเร็วลม</small>
                 <div class="d-flex flex-row justify-content-center align-items-center mt-auto">
                     <img src="~/static/svg/weather/air-speed.svg" class="mr-3" />
-                    8 km/hrs
+                    {{ wind | decimal }} km/hr
                 </div>
             </div>
         </div>
@@ -73,13 +57,30 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 import moment from 'moment'
 
 export default {
     computed: {
+        ...mapState('weather', [
+            'description',
+            'temp',
+            'humidity',
+            'pressure',
+            'sun',
+            'wind'
+        ]),
         date () {
             return moment().add(543, 'years').lang('th').format('dddd Do MMMM YYYY')
         }
+    },
+    methods: {
+        ...mapActions('weather', [
+            'fetch'
+        ])
+    },
+    mounted () {
+        this.fetch()
     }
 }
 </script>

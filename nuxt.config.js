@@ -1,6 +1,7 @@
 export default {
   env: {
-    googleMapsApiKey: process.env.NUXT_ENV_GOOGLE_MAPS_API_KEY
+    googleMapsApiKey: process.env.NUXT_ENV_GOOGLE_MAPS_API_KEY,
+    openWeatherApiKey: process.env.OPEN_WEATHER_API_KEY
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
