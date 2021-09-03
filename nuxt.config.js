@@ -1,6 +1,7 @@
 export default {
   env: {
-    googleMapsApiKey: process.env.NUXT_ENV_GOOGLE_MAPS_API_KEY,
+    baseApi: process.env.BASE_API,
+    googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
     openWeatherApiKey: process.env.OPEN_WEATHER_API_KEY
   },
 
@@ -51,7 +52,7 @@ export default {
   ],
 
   axios: {
-    baseURL: '/api'
+    baseURL: process.env.BASE_API
   },
 
   auth: {
