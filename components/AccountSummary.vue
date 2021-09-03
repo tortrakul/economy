@@ -23,7 +23,7 @@
                 <h6 class="text-center">จำนวนเฉลี่ยสวนต่อเกษตรกร</h6>
 
                 <div class="card card-body border-0 mb-5 justify-content-center flex-grow-1 text-white text-center" style="background-color: #fe8776;">
-                    <h2 class="mb-0">{{ farmerFarmAverage }}</h2>
+                    <h2 class="mb-0">{{ farmerFarmAverage | decimal }}</h2>
                 </div>
             </div>
 
