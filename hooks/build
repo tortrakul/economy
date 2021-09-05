@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t $IMAGE_NAME --build-arg BASE_API=$BASE_API --build-arg GOOGLE_MAPS_API_KEY=$GOOGLE_MAPS_API_KEY --build-arg OPEN_WEATHER_API_KEY=$OPEN_WEATHER_API_KEY .
+docker build -t $IMAGE_NAME --build-arg BASE_API=$BASE_API --build-arg GOOGLE_MAPS_API_KEY=$GOOGLE_MAPS_API_KEY --build-arg WEATHER_API_KEY=$WEATHER_API_KEY .

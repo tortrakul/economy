@@ -1,4 +1,6 @@
-FROM node:10.7
+# syntax=docker/dockerfile:1
+
+FROM node:12.18.1
 
 ENV APP_ROOT /src
 
