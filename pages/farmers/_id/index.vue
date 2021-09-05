@@ -14,18 +14,13 @@
                     </div>
 
                     <div class="card-body d-flex flex-column">
-                        <!-- file 1 -->
-                        <div class="position-relative d-flex mb-2 bg-light rounded embed-responsive embed-responsive-1by1">
-                            <img :src="cover" class="rounded img-fluid w-100" />
-                            <a v-if="farmer.avatar_id" @click.prevent="deletingMedia(farmer.avatar_id)" href="#" class="position-absolute" style="top: 6px; right: 6px;">
-                                <span class="material-icons-outlined">close</span>
-                            </a>
-                        </div>
-
-                        <input @change="e => uploadingMedia(e, 0)" type="file" ref="avatar" class="d-none" />
-                        <a v-if="!farmer.avatar_id" @click.prevent="$refs.avatar.click()" href="#" class="btn btn-sm btn-block">
-                            <i class="material-icons">add</i> เพิ่มรูปโปรไฟล์
-                        </a>
+                        <Media
+                            :id="farmer.id"
+                            model="user"
+                            index="0"
+                            :media="farmer.avatar"
+                            :callback="() => find(farmer.id)"
+                            class="mb-2" />
                     </div>
                 </div>
             </div>
@@ -129,12 +124,14 @@
 import { mapActions, mapState } from 'vuex'
 import Edit from '~/components/icons/Edit';
 import Delete from '~/components/icons/Delete';
+import Media from '~/components/Media';
 
 export default {
     props: ['name'],
     components: {
         Edit,
-        Delete
+        Delete,
+        Media
     },
     data: () => ({
         attachingId: null
@@ -145,10 +142,7 @@ export default {
         }),
         ...mapState('user', {
             farmer: 'row'
-        }),
-        cover () {
-            return this.farmer.avatar ?? '/assets/profile.jpg'
-        }
+        })
     },
     methods: {
         ...mapActions('farm', {
@@ -161,10 +155,6 @@ export default {
             attachFarm: 'attachFarm',
             detachFarm: 'detachFarm'
         }),
-        ...mapActions('media', {
-            uploadMedia: 'upload',
-            deleteMedia: 'delete'
-        }),
         deleting () {
             this.delete(this.farmer.id).then(
                 () => this.$router.push('/farmers')
@@ -174,17 +164,6 @@ export default {
             this.deleteFarm(id).then(
                 () => this.find(this.farmer.id)
             )
-        },
-        deletingMedia (id) {
-            this.deleteMedia(id).then(() => this.find(this.farmer.id))
-        },
-        uploadingMedia (e, index) {
-            this.uploadMedia({
-                id: this.farmer.id,
-                model: 'user',
-                index: index,
-                media: e.target.files[0]
-            }).then(() => this.find(this.farmer.id))
         },
         attaching () {
             this.attachFarm({ id: this.farmer.id, farmId: this.attachingId }).then(
