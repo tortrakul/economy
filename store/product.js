@@ -2,6 +2,8 @@ const state = () => ({
   list: [],
   row: null,
   meta: {
+    from_date: null,
+    to_date: null,
     search: null,
     per_page: 12
   }
