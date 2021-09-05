@@ -31,7 +31,7 @@
                         :profile="farm.owner_avatar"
                         :name="farm.owner"
                         tag-class="primary"
-                        tag-label="Lorem ipsum" />
+                        tag-label="&nbsp;" />
 
                     <nuxt-link :to="`/farms/${farm.id}`" class="stretched-link" />
                 </div>
