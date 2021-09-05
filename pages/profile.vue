@@ -137,6 +137,23 @@
                         <div v-if="!$v.username.required" class="invalid-feedback">กรุณากรอก ชื่อผู้ใช้งาน</div>
                     </div>
                 </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">รหัสผู้ใช้งาน</label>
+                    <div class="col-lg-10">
+                        <input v-model="password" type="password" class="form-control" :class="{ 'is-invalid': $v.password.$error }" />
+                        <div v-if="!$v.password.required" class="invalid-feedback">กรุณากรอก รหัสผู้ใช้งาน</div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">ยืนยันรหัสผู้ใช้งาน</label>
+                    <div class="col-lg-10">
+                        <input v-model="confirmPassword" type="password" class="form-control" :class="{ 'is-invalid': $v.confirmPassword.$error }" />
+                        <div v-if="!$v.confirmPassword.required" class="invalid-feedback">กรุณากรอก รหัสผู้ใช้งาน</div>
+                        <div v-if="!$v.confirmPassword.sameAs" class="invalid-feedback">รหัสผู้ใช้งานไม่ตรงกัน</div>
+                    </div>
+                </div>
             </div>
 
             <button class="btn btn-gradient-primary px-4" type="submit">บันทึก</button>
@@ -146,7 +163,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import { required } from 'vuelidate/lib/validators'
+import { required, sameAs } from 'vuelidate/lib/validators'
 
 export default {
 
@@ -163,7 +180,9 @@ export default {
         province_id: { required },
         zip_code: { required },
         email: { required },
-        username: { required }
+        username: { required },
+        password: {},
+        confirmPassword: { sameAs: sameAs('password') }
     },
 
     data: () => ({
@@ -179,7 +198,9 @@ export default {
         province_id: null,
         zip_code: '',
         email: '',
-        username: ''
+        username: '',
+        password: '',
+        confirmPassword: ''
     }),
 
     computed: {
