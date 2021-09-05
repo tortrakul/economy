@@ -54,9 +54,19 @@
                 </div>
             </div>
 
-            <div class="col-12">
+            <div class="col-lg-3">
+                <h6 class="text-center">ผลผลิต 5 อันดับแรก</h6>
+                <donut-chart :key="`${income}-income-donut`" :data="incomeDonut" style="position: relative; height: 200px;" />
+            </div>
+
+            <div class="col-lg-3">
+                <h6 class="text-center">รายจ่าย 5 อันดับแรก</h6>
+                <donut-chart :key="`${income}-expense-donut`" :data="expenseDonut" style="position: relative; height: 200px;" />
+            </div>
+
+            <div class="col-lg-6">
                 <h6 class="mb-3 text-center">ผลผลิตรายเดือน</h6>
-                <line-chart :key="income" :data="chartData" style="position: relative; height: 250px;"  />
+                <line-chart :key="income" :data="chartData" style="position: relative; height: 200px;" />
             </div>
         </div>
     </div>
@@ -65,10 +75,12 @@
 <script>
 import { mapActions, mapGetters, mapState } from 'vuex'
 import LineChart from '~/components/charts/Line'
+import DonutChart from '~/components/charts/Donut'
 
 export default {
   components: {
-    LineChart
+    LineChart,
+    DonutChart
   },
   methods: {
     ...mapActions({
@@ -84,12 +96,44 @@ export default {
         'income',
         'expense',
         'total',
-        'monthlyIncome'
+        'monthlyIncome',
+        'topIncomes',
+        'topExpenses'
     ]),
     ...mapGetters('dashboard', [
         'parsedMonth',
         'parsedYear'
     ]),
+    incomeDonut () {
+        return {
+            labels: this.topIncomes.map(income => income.name),
+            datasets: [{
+                data: this.topIncomes.map(income => income.total),
+                backgroundColor: [
+                    '#68acfc',
+                    '#1baf9d',
+                    '#f88b8c',
+                    '#f3ab76',
+                    '#fcd37d'
+                ]
+            }]
+        }
+    },
+    expenseDonut () {
+        return {
+            labels: this.topExpenses.map(expense => expense.name),
+            datasets: [{
+                data: this.topExpenses.map(expense => expense.total),
+                backgroundColor: [
+                    '#68acfc',
+                    '#1baf9d',
+                    '#f88b8c',
+                    '#f3ab76',
+                    '#fcd37d'
+                ]
+            }]
+        }
+    },
     chartData () {
         return {
             labels: this.monthlyIncome.map(month => this.months[month.month]),

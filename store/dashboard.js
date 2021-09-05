@@ -8,7 +8,9 @@ export const state = () => ({
     income: 0,
     expense: 0,
     total: 0,
-    monthlyIncome: []
+    monthlyIncome: [],
+    topIncomes: [],
+    topExpenses: []
 })
 
 export const getters = {
@@ -39,5 +41,7 @@ export const mutations = {
     state.expense = payload.expense
     state.total = payload.total
     state.monthlyIncome = payload.monthly_income
+    state.topIncomes = payload.top_incomes
+    state.topExpenses = payload.top_expenses
   }
 }
