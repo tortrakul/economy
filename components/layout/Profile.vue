@@ -2,12 +2,10 @@
     <div class="card">
         <div class="card-body d-flex flex-column">
             <Media
-                :key="$auth.user.avatar_id"
-                :src="$auth.user.avatar"
                 :id="$auth.user.id"
                 model="user"
                 index="0"
-                :media-id="$auth.user.avatar_id"
+                :media="$auth.user.avatar"
                 :callback="() => $auth.fetchUser()"
                 class="mx-auto mb-2 w-50" />
 

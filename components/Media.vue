@@ -1,7 +1,7 @@
 <template>
     <div class="position-relative d-flex bg-light rounded embed-responsive embed-responsive-1by1">
         <template v-if="media">
-            <img :src="src" class="rounded img-fluid w-100" />
+            <img :src="media.src" class="rounded img-fluid w-100" />
 
             <a @click.prevent="deleting" href="#" class="position-absolute" style="top: 6px; right: 6px;">
                 <span class="material-icons-outlined">close</span>
@@ -22,19 +22,15 @@
 import { mapActions, mapState } from 'vuex'
 
 export default {
-    props: ['src', 'id', 'model', 'index', 'mediaId', 'callback'],
-    data: () => ({
-        media: null
-    }),
+    props: ['src', 'id', 'model', 'index', 'media', 'callback'],
     methods: {
         ...mapActions('media', {
             uploadMedia: 'upload',
             deleteMedia: 'delete'
         }),
         deleting () {
-            this.deleteMedia(this.mediaId).then(
+            this.deleteMedia(this.media.id).then(
                 () => {
-                    this.media = null
                     this.callback()
                 }
             )
@@ -47,9 +43,6 @@ export default {
                 media: e.target.files[0]
             }).then(() => this.callback())
         }
-    },
-    mounted () {
-        this.media = this.mediaId
     }
 }
 </script>
