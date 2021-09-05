@@ -3,12 +3,12 @@
         <div class="card card-body mb-3">
             <h5 class="card-title">รายการผลผลิต</h5>
 
-            <div class="d-flex mb-5">
-                <router-link to="/products/create" class="btn btn-gradient-primary pr-3 text-nowrap">
+            <div class="d-flex flex-column flex-sm-row mb-3 mb-lg-5">
+                <router-link to="/products/create" class="btn btn-gradient-primary mr-sm-3 mb-3 mb-sm-0 text-nowrap">
                     <i class="material-icons">add</i> เพิ่มผลผลิต
                 </router-link>
 
-                <div class="input-group mx-3">
+                <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="material-icons">search</i></span>
                     </div>
