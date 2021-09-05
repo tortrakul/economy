@@ -133,9 +133,6 @@ export default {
         Delete,
         Media
     },
-    data: () => ({
-        attachingId: null
-    }),
     computed: {
         ...mapState('farm', {
             farms: 'list'
@@ -162,19 +159,6 @@ export default {
         },
         deletingFarm (id) {
             this.deleteFarm(id).then(
-                () => this.find(this.farmer.id)
-            )
-        },
-        attaching () {
-            this.attachFarm({ id: this.farmer.id, farmId: this.attachingId }).then(
-                () => {
-                    this.find(this.farmer.id)
-                    this.attachingId = null
-                }
-            )
-        },
-        detaching (farmId) {
-            this.detachFarm({ id: this.farmer.id, farmId }).then(
                 () => this.find(this.farmer.id)
             )
         }
