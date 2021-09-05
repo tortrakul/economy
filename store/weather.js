@@ -1,4 +1,4 @@
-const api = 'https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?lang=th&units=metric&q=Pa+Sang&appid='
+const api = 'https://api.weatherapi.com/v1/current.json?q=Pa+Sang&key='
 
 export const state = () => ({
   description: '',
@@ -11,7 +11,7 @@ export const state = () => ({
 
 export const actions = {
   async fetch ({ commit }, payload) {
-    await this.$axios.$get(api + process.env.openWeatherApiKey).then(
+    await this.$axios.$get(api + process.env.weatherApiKey).then(
         response => commit('fetch', response)
     )
   }
@@ -19,10 +19,10 @@ export const actions = {
 
 export const mutations = {
   fetch: (state, payload) => {
-    state.description = payload.weather[0].description
-    state.temp = payload.main.temp
-    state.humidity = payload.main.humidity
-    state.pressure = payload.main.pressure * 0.000986923267
-    state.wind = payload.wind.speed * 3.6
+    state.description = payload.current.condition.text
+    state.temp = payload.current.temp_c
+    state.humidity = payload.current.humidity
+    state.pressure = payload.current.pressure_mb * (1 / 1013.25)
+    state.wind = payload.current.wind_kph
   }
 }
