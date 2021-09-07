@@ -42,6 +42,7 @@ const actions = {
     form.append('date', payload.date)
     form.append('total', payload.total)
     form.append('description', payload.description)
+    form.append('tags[0]', payload.tag)
     form.append('file_1', payload.file1)
     form.append('file_2', payload.file2)
     form.append('file_3', payload.file3)
@@ -54,6 +55,7 @@ const actions = {
     await this.$axios.$post('/transactions', form, config)
   },
   async update (ctx, payload) {
+    payload.tags = [payload.tag]
     await this.$axios.$patch(`/transactions/${payload.id}`, payload)
   },
   async delete (ctx, id) {

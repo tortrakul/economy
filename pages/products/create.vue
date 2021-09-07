@@ -79,6 +79,20 @@
                     </div>
                 </div>
 
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">ประเภท</label>
+                    <div class="col-lg-10">
+                        <select v-model="tag" class="form-control" :class="{ 'is-invalid': $v.tag.$error }">
+                            <option>General</option>
+                            <option>Organically Grown</option>
+                            <option>Hydroponics</option>
+                            <option>Pesticide Safe</option>
+                            <option>Certified Organic</option>
+                        </select>
+                        <div v-if="!$v.tag.required" class="invalid-feedback">กรุณากรอก ประเภท</div>
+                    </div>
+                </div>
+
                 <div class="form-group row" v-for="(file,index) in ['file1', 'file2', 'file3', 'file4']" :key="index">
                     <label v-if="index == 0" class="col-lg-2 col-form-label">รูปภาพ</label>
                     <div class="col-lg-10" :class="{ 'offset-lg-2': index > 0 }">
@@ -114,6 +128,7 @@ export default {
         date: { required },
         total: { required },
         description: { required },
+        tag: { required },
         file1: { required },
         file2: {},
         file3: {},
@@ -128,6 +143,7 @@ export default {
         date: null,
         total: '',
         description: null,
+        tag: null,
         file1: null,
         file2: null,
         file3: null,

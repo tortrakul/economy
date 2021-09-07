@@ -79,6 +79,20 @@
                     </div>
                 </div>
 
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">ประเภท</label>
+                    <div class="col-lg-10">
+                        <select v-model="tag" class="form-control" :class="{ 'is-invalid': $v.tag.$error }">
+                            <option>General</option>
+                            <option>Organically Grown</option>
+                            <option>Hydroponics</option>
+                            <option>Pesticide Safe</option>
+                            <option>Certified Organic</option>
+                        </select>
+                        <div v-if="!$v.tag.required" class="invalid-feedback">กรุณากรอก ประเภท</div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-lg-10 offset-lg-2">
                         <button class="btn btn-gradient-primary px-4" type="submit">บันทึก</button>
@@ -102,7 +116,8 @@ export default {
         unit_price: { required },
         date: { required },
         total: { required },
-        description: { required }
+        description: { required },
+        tag: { required }
     },
     data: () => ({
         farm_id: null,
@@ -112,7 +127,8 @@ export default {
         unit_price: '',
         date: null,
         total: '',
-        description: null
+        description: null,
+        tag: null
     }),
     computed: {
         ...mapState('farm', {
@@ -155,6 +171,7 @@ export default {
                 this.date = this.row.date
                 this.total = this.row.total
                 this.description = this.row.description
+                this.tag = this.row.tag
             }
         )
     }
