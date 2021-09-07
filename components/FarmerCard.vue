@@ -1,7 +1,9 @@
 <template>
     <div class="card card-body p-2 shadow-sm">
 
-        <img :src="cover" class="rounded" />
+        <div class="d-flex justify-content-center align-items-center w-100 overflow-hidden rounded" style="height: 150px; max-height: 150px;">
+            <img :src="cover" class="img-fluid rounded" />
+        </div>
 
         <div class="p-2">
             <p class="d-flex align-items-center mb-2">
