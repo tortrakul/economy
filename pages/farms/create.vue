@@ -151,7 +151,7 @@ export default {
         file4: {}
     },
     data: () => ({
-        center: { lat: 18.7885802, lng: 98.9792284 },
+        center: { lat: 18.512, lng: 98.937 },
         owner_id: null,
         name: '',
         tel: '',
@@ -160,8 +160,8 @@ export default {
         district: null,
         province: null,
         zipCode: '',
-        lat: 18.7885802,
-        lng: 98.9792284,
+        lat: 18.512,
+        lng: 98.937,
         description: '',
         file1: null,
         file2: null,
