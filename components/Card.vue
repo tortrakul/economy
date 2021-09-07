@@ -5,8 +5,8 @@
             <img :src="src" class="img-fluid rounded" />
         </div>
 
-        <div class="p-2">
-            <p class="d-flex align-items-center mb-2">{{ title }}</p>
+        <div class="d-flex flex-column p-2">
+            <p class="mb-2 text-truncate">{{ title }}</p>
 
             <small class="text-muted" v-html="subtitle" />
         </div>

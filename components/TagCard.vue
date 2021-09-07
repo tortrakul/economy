@@ -7,13 +7,13 @@
             <img :src="src" class="img-fluid rounded" />
         </div>
 
-        <div class="p-2">
-            <p class="mb-0 font-weight-bold">{{ title }}</p>
-            <small class="text-muted">{{ subtitle }}</small>
+        <div class="d-flex flex-column p-2">
+            <p class="mb-0 font-weight-bold text-truncate">{{ title }}</p>
+            <small class="text-muted text-truncate">{{ subtitle }}</small>
 
-            <div class="mt-2">
+            <div class="d-flex align-items-center mt-2">
                 <img :src="avatar" width="32" height="32" class="mr-1 rounded-circle" />
-                <small>{{ name }}</small>
+                <small class="text-nowrap overflow-hidden text-truncate">{{ name }}</small>
             </div>
         </div>
     </div>

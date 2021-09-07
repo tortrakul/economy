@@ -4,12 +4,12 @@
             <div class="col-lg-4">
                 <div class="card mb-3">
                     <div class="card-header d-flex flex-column flex-lg-row pb-0 bg-white border-bottom-0">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center overflow-hidden">
                             <router-link v-if="$auth.hasScope('admin')" to="/farmers" class="btn btn-sm btn-default pl-0">
                                 <i class="material-icons">chevron_left</i>
                             </router-link>
 
-                            <h5 class="card-title mb-0">{{ farmer.name }}</h5>
+                            <h5 class="card-title mb-0 text-truncate">{{ farmer.name }}</h5>
                         </div>
                     </div>
 
