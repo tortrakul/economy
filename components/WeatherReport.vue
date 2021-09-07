@@ -38,13 +38,6 @@
                     {{ pressure | decimal }} atm
                 </div>
             </div>
-            <div class="d-flex flex-lg-column justify-content-between align-items-center flex-grow-1 py-2 text-center border-right">
-                <small class="text-muted">สภาพอากาศ</small>
-                <div class="d-flex flex-row justify-content-center align-items-center mt-auto">
-                    <img src="~/static/svg/weather/sunlight.svg" class="mr-3" />
-                    {{ description }}
-                </div>
-            </div>
             <div class="d-flex flex-lg-column justify-content-between align-items-center flex-grow-1 py-2 text-center">
                 <small class="text-muted">ความเร็วลม</small>
                 <div class="d-flex flex-row justify-content-center align-items-center mt-auto">
@@ -63,7 +56,6 @@ import moment from 'moment'
 export default {
     computed: {
         ...mapState('weather', [
-            'description',
             'temp',
             'humidity',
             'pressure',
