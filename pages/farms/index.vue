@@ -25,9 +25,7 @@
                         :title="farm.name"
                         :subtitle="farm.province"
                         :profile="farm.owner_avatar"
-                        :name="farm.owner"
-                        tag-class="primary"
-                        tag-label="&nbsp;" />
+                        :name="farm.owner" />
 
                     <nuxt-link :to="`/farms/${farm.id}`" class="stretched-link" />
                 </div>
