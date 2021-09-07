@@ -16,11 +16,11 @@
             <Farmer class="mr-3" style="width: 18px; height: 18px;" /> รายชื่อเกษตรกร
         </nuxt-link>
 
-        <nuxt-link v-if="!$auth.hasScope('admin')" to="/products" class="d-flex align-items-center py-2">
+        <nuxt-link to="/products" class="d-flex align-items-center py-2">
             <Stock class="mr-3" style="width: 18px; height: 18px;" /> รายการผลผลิต
         </nuxt-link>
 
-        <nuxt-link v-if="!$auth.hasScope('admin')" to="/expenses" class="d-flex align-items-center py-2">
+        <nuxt-link to="/expenses" class="d-flex align-items-center py-2">
             <List class="mr-3" style="width: 18px; height: 18px;" /> รายจ่าย
         </nuxt-link>
     </div>
