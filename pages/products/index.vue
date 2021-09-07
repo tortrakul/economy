@@ -48,8 +48,8 @@
                         :subtitle="`${product.amount} ${product.unit} / ${product.total} บาท`"
                         :profile="product.farm_avatar"
                         :name="product.farm"
-                        tag-class="primary"
-                        tag-label="Lorem ipsum" />
+                        :tag-color="tagColor(product.tag)"
+                        :tag-label="product.tag" />
 
                     <nuxt-link :to="`/products/${product.id}`" class="stretched-link" />
                 </div>
@@ -87,7 +87,17 @@ export default {
   methods: {
     ...mapActions({
         all: 'product/all'
-    })
+    }),
+    tagColor (tag) {
+
+        switch (tag) {
+            case 'General': return '#f3776d'; break;
+            case 'Organically Grown': return '#b893c7'; break;
+            case 'Hydroponics': return '#75b2d9'; break;
+            case 'Pesticide Safe': return '#f5c14c'; break;
+            case 'Certified Organic': return '#91c962'; break;
+        }
+    }
   },
   computed: {
     ...mapState('product', [
