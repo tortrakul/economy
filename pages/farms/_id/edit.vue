@@ -71,7 +71,7 @@
 
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <select v-model="subDistrict" class="form-control" :disabled="!subDistricts.length" :class="{ 'is-invalid': $v.subDistrict.$error }">
+                                    <select v-model="subDistrict" @change="setLatLng" class="form-control" :disabled="!subDistricts.length" :class="{ 'is-invalid': $v.subDistrict.$error }">
                                         <option disabled :value="null">ตำบล</option>
                                         <option v-for="sd in subDistricts" :value="sd.id" :key="sd.id">{{ sd.name }}</option>
                                     </select>
@@ -200,6 +200,13 @@ export default {
         move (latLng) {
             this.lat = latLng.lat()
             this.lng = latLng.lng()
+        },
+        setLatLng () {
+            const { lat, lng } = this.subDistricts.find(sd => sd.id === this.subDistrict)
+            this.lat = lat
+            this.lng = lng
+            this.center.lat = lat
+            this.center.lng = lng
         }
     },
     mounted () {

@@ -92,7 +92,7 @@
                 <div class="form-group row">
                     <div class="col-lg-10 offset-lg-2">
                         <GmapMap
-                            :center="{ lat: 18.7885802, lng: 98.9792284 }"
+                            :center="center"
                             @center_changed="move"
                             :zoom="16"
                             style="height: 300px">
@@ -151,6 +151,7 @@ export default {
         file4: {}
     },
     data: () => ({
+        center: { lat: 18.7885802, lng: 98.9792284 },
         owner_id: null,
         name: '',
         tel: '',
@@ -176,6 +177,15 @@ export default {
         ...mapState('user', {
             users: 'list'
         })
+    },
+    watch: {
+        subDistrict () {
+            const { lat, lng } = this.subDistricts.find(sd => sd.id === this.subDistrict)
+            this.lat = lat
+            this.lng = lng
+            this.center.lat = lat
+            this.center.lng = lng
+        }
     },
     methods: {
         ...mapActions({
