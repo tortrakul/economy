@@ -13,6 +13,9 @@ export default {
                     }
                 }],
                 yAxes: [{
+                    ticks: {
+                      min: 0
+                    },
                     gridLines: {
                         display: true
                     }
