@@ -34,7 +34,7 @@
                 <div class="form-group row">
                     <label class="col-lg-2 col-form-label">จำนวน</label>
                     <div class="col-lg-10">
-                        <input v-model="amount" type="text" class="form-control" :class="{ 'is-invalid': $v.amount.$error }" />
+                        <input v-model="amount" type="number" class="form-control" :class="{ 'is-invalid': $v.amount.$error }" />
                         <div v-if="!$v.amount.required" class="invalid-feedback">กรุณากรอก จำนวน</div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                 <div class="form-group row">
                     <label class="col-lg-2 col-form-label">ราคาต่อหน่วย</label>
                     <div class="col-lg-10">
-                        <input v-model="unit_price" type="text" class="form-control" :class="{ 'is-invalid': $v.unit_price.$error }" />
+                        <input v-model="unit_price" type="number" class="form-control" :class="{ 'is-invalid': $v.unit_price.$error }" />
                         <div v-if="!$v.unit_price.required" class="invalid-feedback">กรุณากรอก ราคาต่อหน่วย</div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                 <div class="form-group row">
                     <label class="col-lg-2 col-form-label">ราคา</label>
                     <div class="col-lg-10">
-                        <input v-model="total" type="text" class="form-control" :class="{ 'is-invalid': $v.total.$error }" />
+                        <input v-model="total" type="text" class="form-control" :class="{ 'is-invalid': $v.total.$error }" readonly />
                         <div v-if="!$v.total.required" class="invalid-feedback">กรุณากรอก ราคา</div>
                     </div>
                 </div>
@@ -114,6 +114,14 @@ export default {
         total: '',
         description: null
     }),
+    watch: {
+        unit_price () {
+            this.total = this.unit_price * this.amount
+        },
+        amount () {
+            this.total = this.unit_price * this.amount
+        }
+    },
     computed: {
         ...mapState('farm', {
             farms: 'list',
