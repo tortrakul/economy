@@ -8,6 +8,10 @@
             <Farmer class="mr-3" style="width: 18px; height: 18px;" /> ข้อมูลเกษตรกร
         </nuxt-link>
 
+        <nuxt-link to="/shops" class="d-flex align-items-center py-2">
+            <Basket class="mr-3" style="width: 18px; height: 18px;" /> รายชื่อร้านค้า OTOP
+        </nuxt-link>
+
         <nuxt-link to="/farms" class="d-flex align-items-center py-2">
             <Farm class="mr-3" style="width: 18px; height: 18px;" /> รายชื่อสวน
         </nuxt-link>
@@ -28,6 +32,7 @@
 
 <script>
 import Home from '~/components/icons/Home';
+import Basket from '~/components/icons/Basket';
 import Stock from '~/components/icons/Stock';
 import Farmer from '~/components/icons/Farmer';
 import Farm from '~/components/icons/Farm';
@@ -36,6 +41,7 @@ import List from '~/components/icons/List';
 export default {
     components: {
         Home,
+        Basket,
         Stock,
         Farmer,
         Farm,
