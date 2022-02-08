@@ -2,19 +2,19 @@
     <div>
         <ShopCard v-if="row" class="mb-3" />
 
-        <FarmLocation v-if="row" :key="`${row.lat},${row.lng}`" :lat="row.lat" :lng="row.lng" />
+        <ShopLocation v-if="row" :key="`${row.lat},${row.lng}`" :lat="row.lat" :lng="row.lng" />
     </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
 import ShopCard from '~/components/ShopCard';
-import FarmLocation from '~/components/FarmLocation';
+import ShopLocation from '~/components/ShopLocation';
 
 export default {
     components: {
         ShopCard,
-        FarmLocation
+        ShopLocation
     },
     methods: {
         ...mapActions({
