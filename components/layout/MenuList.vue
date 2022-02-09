@@ -8,14 +8,6 @@
             <Farmer class="mr-3" style="width: 18px; height: 18px;" /> ข้อมูลเกษตรกร
         </nuxt-link>
 
-        <nuxt-link to="/shops" class="d-flex align-items-center py-2">
-            <Basket class="mr-3" style="width: 18px; height: 18px;" /> รายชื่อร้านค้า OTOP
-        </nuxt-link>
-
-        <nuxt-link to="/otops" class="d-flex align-items-center py-2">
-            <Basket class="mr-3" style="width: 18px; height: 18px;" /> รายชื่อสินค้า OTOP
-        </nuxt-link>
-
         <nuxt-link to="/farms" class="d-flex align-items-center py-2">
             <Farm class="mr-3" style="width: 18px; height: 18px;" /> รายชื่อสวน
         </nuxt-link>
@@ -31,6 +23,14 @@
         <nuxt-link to="/expenses" class="d-flex align-items-center py-2">
             <List class="mr-3" style="width: 18px; height: 18px;" /> รายจ่าย
         </nuxt-link>
+
+        <nuxt-link to="/shops" class="d-flex align-items-center py-2">
+            <Customer class="mr-3" style="width: 18px; height: 18px;" /> รายชื่อร้านค้า OTOP
+        </nuxt-link>
+
+        <nuxt-link to="/otops" class="d-flex align-items-center py-2">
+            <Basket class="mr-3" style="width: 18px; height: 18px;" /> รายชื่อสินค้า OTOP
+        </nuxt-link>
     </div>
 </template>
 
@@ -41,6 +41,7 @@ import Stock from '~/components/icons/Stock';
 import Farmer from '~/components/icons/Farmer';
 import Farm from '~/components/icons/Farm';
 import List from '~/components/icons/List';
+import Customer from '~/components/icons/Customer';
 
 export default {
     components: {
@@ -49,7 +50,8 @@ export default {
         Stock,
         Farmer,
         Farm,
-        List
+        List,
+        Customer
     }
 }
 </script>
