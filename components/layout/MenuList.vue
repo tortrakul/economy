@@ -12,6 +12,10 @@
             <Basket class="mr-3" style="width: 18px; height: 18px;" /> รายชื่อร้านค้า OTOP
         </nuxt-link>
 
+        <nuxt-link to="/otops" class="d-flex align-items-center py-2">
+            <Basket class="mr-3" style="width: 18px; height: 18px;" /> รายชื่อสินค้า OTOP
+        </nuxt-link>
+
         <nuxt-link to="/farms" class="d-flex align-items-center py-2">
             <Farm class="mr-3" style="width: 18px; height: 18px;" /> รายชื่อสวน
         </nuxt-link>

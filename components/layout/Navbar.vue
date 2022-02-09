@@ -15,6 +15,7 @@
                     <b-nav-item to="/" exact-path>หน้าหลัก</b-nav-item>
                     <b-nav-item :to="`/farmers/${$auth.user.id}`" v-if="!$auth.hasScope('admin')">ข้อมูลเกษตรกร</b-nav-item>
                     <b-nav-item to="/shops">รายชื่อร้านค้า OTOP</b-nav-item>
+                    <b-nav-item to="/otops">รายชื่อสินค้า OTOP</b-nav-item>
                     <b-nav-item to="/farms">รายชื่อสวน</b-nav-item>
                     <b-nav-item to="/farmers" v-if="$auth.hasScope('admin')">รายชื่อเกษตรกร</b-nav-item>
                     <b-nav-item to="/products">รายการผลผลิต</b-nav-item>
