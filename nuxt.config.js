@@ -1,6 +1,7 @@
 export default {
   env: {
     baseApi: process.env.BASE_API,
+    baseUrl: process.env.BASE_URL,
     googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
     weatherApiKey: process.env.WEATHER_API_KEY
   },
@@ -50,6 +51,10 @@ export default {
     '@nuxtjs/axios',
     'bootstrap-vue/nuxt',
   ],
+
+  router: {
+    base: process.env.BASE_URL
+  },
 
   axios: {
     baseURL: process.env.BASE_API
