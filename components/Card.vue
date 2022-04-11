@@ -18,7 +18,7 @@ export default {
     props: ['cover', 'title', 'subtitle'],
     computed: {
         src () {
-            return this.cover ?? '/assets/product.png'
+            return this.cover ?? './assets/product.png'
         }
     }
 }

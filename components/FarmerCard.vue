@@ -31,7 +31,7 @@ export default {
     },
     computed: {
         cover () {
-            return this.farmer.cover ?? '/assets/profile.jpg'
+            return this.farmer.cover ?? './assets/profile.jpg'
         }
     }
 }

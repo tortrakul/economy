@@ -4,12 +4,12 @@
 
         <div class="d-flex flex-column flex-lg-row">
           <p class="mr-lg-4 mb-1 mb-lg-0 text-muted">
-            <img src="/svg/calender.svg" width="16" height="16" class="mr-2" />
+            <img src="~/static/svg/calender.svg" width="16" height="16" class="mr-2" />
             {{ date }}
           </p>
 
           <p class="mb-0 text-muted">
-            <img src="/svg/point.svg" width="16" height="16" class="mr-2" />
+            <img src="~/static/svg/point.svg" width="16" height="16" class="mr-2" />
             อ.ป่าซาง จ.ลำพูน
           </p>
         </div>

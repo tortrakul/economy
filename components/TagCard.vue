@@ -24,10 +24,10 @@ export default {
     props: ['cover', 'title', 'subtitle', 'profile', 'name', 'tag-class', 'tag-color', 'tag-label'],
     computed: {
         src () {
-            return this.cover ?? '/assets/product.png'
+            return this.cover ?? './assets/product.png'
         },
         avatar () {
-            return this.profile ?? '/assets/profile.jpg'
+            return this.profile ?? './assets/profile.jpg'
         }
     }
 }
